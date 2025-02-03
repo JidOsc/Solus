@@ -92,10 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d1c76439998ceb4a95d194f2b193829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  health: 100
-  damage: 10
-  obstacleRange: 5
+  Player: {fileID: 9118517663248347731, guid: 9a71dd38edbb3564eaba1ac1c7de98de, type: 3}
+  player: {fileID: 7063599584404908031, guid: 9a71dd38edbb3564eaba1ac1c7de98de, type: 3}
+  speed: 5
 --- !u!212 &8649352284212506256
 SpriteRenderer:
   m_ObjectHideFlags: 0
