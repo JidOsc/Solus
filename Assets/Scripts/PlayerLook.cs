@@ -9,6 +9,7 @@ public class PlayerLook : MonoBehaviour
 
     void Start()
     {
+        sensitivity = PlayerPrefs.GetFloat("SENSITIVITY"); 
         // Lock the cursor to the center of the screen and hide it
         Cursor.lockState = CursorLockMode.Locked;
     }
