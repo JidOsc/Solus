@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f; // Movement speed
+    public float walkSpeed = 5f; // Normal walking speed
+    public float sprintSpeed = 10f; // Sprinting speed
     public float jumpForce = 7f; // Jump force
     public float gravity = 10f; // Gravity multiplier
 
@@ -29,9 +30,12 @@ public class PlayerMovement : MonoBehaviour
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
 
+        // Determine if player is sprinting
+        float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed;
+
         // Move the player
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
-        controller.Move(move * speed * Time.deltaTime);
+        controller.Move(move * currentSpeed * Time.deltaTime);
 
         // Jump
         if (Input.GetButtonDown("Jump") && isGrounded)
