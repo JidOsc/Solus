@@ -5,13 +5,6 @@ public class PlayerInteract : MonoBehaviour
 {
     List<GameObject> interactableObjects = new List<GameObject>();
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         foreach(GameObject obj in interactableObjects)
@@ -19,6 +12,12 @@ public class PlayerInteract : MonoBehaviour
             if (obj.tag == "Ore")
             {
                 //if player is mining
+                if (Input.GetMouseButtonDown(0))
+                {
+                    OreScript ore = obj.GetComponent<OreScript>();
+                    ore.Mine();
+                    Debug.Log("Högg!");
+                }
             }
         }
     }
