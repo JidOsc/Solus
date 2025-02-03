@@ -381,6 +381,10 @@ MonoBehaviour:
   sprintSpeed: 10
   jumpForce: 0.6
   gravity: 10
+  maxStamina: 100
+  stamina: 100
+  staminaDrainRate: 25
+  staminaRegenRate: 15
 --- !u!143 &8518560165512589318
 CharacterController:
   m_ObjectHideFlags: 0
