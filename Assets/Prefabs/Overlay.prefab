@@ -86,7 +86,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 10
   m_WholeNumbers: 1
-  m_Value: 7
+  m_Value: 8
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -112,7 +112,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1734616591553768398}
-  - component: {fileID: 8827658246322542587}
   m_Layer: 0
   m_Name: Overlay
   m_TagString: Untagged
@@ -137,18 +136,6 @@ Transform:
   - {fileID: 447925055218836009}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8827658246322542587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3203722573940053398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08d5d93168ce65946941b6cb8fbb2666, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5306952790664425691
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,6 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c370026dd86fc10488d714c4bf397207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   images: []
 --- !u!1 &7696160537814171467
 GameObject:
