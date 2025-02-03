@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &105308938 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1665479996706277272, guid: e783edd98df08414ead96886ada6153f, type: 3}
+  m_PrefabInstance: {fileID: 4195958913249819873}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &203844586
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,10 +504,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Overlay
       objectReference: {fileID: 0}
+    - target: {fileID: 4311621662534723440, guid: e783edd98df08414ead96886ada6153f, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6399344788150156029, guid: e783edd98df08414ead96886ada6153f, type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 105308938}
     - target: {fileID: 6399344788150156029, guid: e783edd98df08414ead96886ada6153f, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 2080298769}
+    - target: {fileID: 7212459339406250993, guid: e783edd98df08414ead96886ada6153f, type: 3}
+      propertyPath: m_Value
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427277892124319164, guid: e783edd98df08414ead96886ada6153f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427277892124319164, guid: e783edd98df08414ead96886ada6153f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
