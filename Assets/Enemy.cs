@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public GameObject player;
 
     public float speed = 2f;
-    public int health = 100;
+    public int Maxhealth = 100;
+    public int currentHealth;
     public int damage = 10;
     public float obstacleRange = 5f;
 
@@ -13,6 +15,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         _alive = true;
+        currentHealth = Maxhealth;
     }
 
     // Update is called once per frame
@@ -35,6 +38,22 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Debug.Log("Enemy died!");
+        Destroy(gameObject);
+    }
+
     public void SetAlive(bool alive)
     {
         _alive = alive;
@@ -47,6 +66,5 @@ public class Enemy : MonoBehaviour
         {
             behavior.SetAlive(false);
         }
-        //StartCoroutine(Die());?????????????????????????
     }
 }
