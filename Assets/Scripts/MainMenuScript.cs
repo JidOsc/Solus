@@ -6,6 +6,7 @@ public class VerticalBox : MonoBehaviour
 {
     public int MARGIN = 20;
 
+
     void Update()
     {
         short ApplicableItems = 0;
@@ -32,7 +33,8 @@ public class VerticalBox : MonoBehaviour
 
     public void SettingsButtonPressed()
     {
-
+        PlayerPrefs.SetFloat("SENSITIVITY", 400f);
+        PlayerPrefs.Save();
     }
 
     public void CreditsButtonPressed()
