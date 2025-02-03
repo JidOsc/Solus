@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float health = 7f; 
 
     public float maxStamina = 100f;
-    private float stamina;
+    public float stamina;
     public float staminaDrainRate = 20f;
     public float staminaRegenRate = 15f;
 
