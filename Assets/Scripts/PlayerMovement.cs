@@ -1,17 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI; // Import UI library
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float walkSpeed = 5f; // Normal walking speed
-    public float sprintSpeed = 10f; // Sprinting speed
-    public float jumpForce = 7f; // Jump force
-    public float gravity = 10f; // Gravity multiplier
+    public float walkSpeed = 5f;
+    public float sprintSpeed = 10f;
+    public float jumpForce = 7f;
+    public float gravity = 10f;
     public float health = 7f; 
 
-    public float maxStamina = 100f; // Maximum stamina
-    public float stamina; // Current stamina
-    public float staminaDrainRate = 20f; // Stamina drain per second while sprinting
-    public float staminaRegenRate = 15f; // Stamina regeneration per second
+    public float maxStamina = 100f;
+    private float stamina;
+    public float staminaDrainRate = 20f;
+    public float staminaRegenRate = 15f;
+
+    public Slider staminaBar; // Reference to the UI Stamina Bar
 
     private CharacterController controller;
     private Vector3 velocity;
@@ -20,53 +23,58 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        stamina = maxStamina; // Set stamina to full at start
+        stamina = maxStamina;
+
+        // Find the stamina bar UI if not assigned
+        if (staminaBar == null)
+        {
+            staminaBar = GameObject.Find("StaminaBar").GetComponent<Slider>();
+        }
+
+        staminaBar.maxValue = maxStamina;
+        staminaBar.value = stamina;
     }
 
     void Update()
     {
-        // Check if the player is on the ground
         isGrounded = controller.isGrounded;
 
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f; // Small downward force to keep grounded
+            velocity.y = -2f;
         }
 
-        // Get input
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
 
-        // Check if the player is moving
-        bool isMoving = moveX != 0 || moveZ != 0;
-
-        // Sprinting logic: only allow sprinting if moving & stamina > 0
-        bool isSprinting = Input.GetKey(KeyCode.LeftShift) && isMoving && stamina > 0;
+        bool isSprinting = Input.GetKey(KeyCode.LeftShift) && stamina > 0;
         float currentSpeed = isSprinting ? sprintSpeed : walkSpeed;
 
-        // Move the player
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
         controller.Move(move * currentSpeed * Time.deltaTime);
 
-        // Stamina management
-        if (isSprinting)
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             stamina -= staminaDrainRate * Time.deltaTime;
-            stamina = Mathf.Clamp(stamina, 0, maxStamina); // Prevent stamina from going below 0
         }
-        else if (isMoving && stamina < maxStamina) // Regenerate only while walking
+        else
         {
             stamina += staminaRegenRate * Time.deltaTime;
-            stamina = Mathf.Clamp(stamina, 0, maxStamina); // Prevent stamina from going above max
         }
 
-        // Jump
+        stamina = Mathf.Clamp(stamina, 0, maxStamina);
+
+        // Update the stamina bar UI
+        if (staminaBar != null)
+        {
+            staminaBar.value = stamina;
+        }
+
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpForce * 2f * gravity);
         }
 
-        // Apply gravity
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
