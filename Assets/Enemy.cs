@@ -30,11 +30,7 @@ public class Enemy : MonoBehaviour
         if (_alive && player != null)
         {
             FollowPlayer();
-            Vector3 direction = (player.transform.position - transform.position).normalized;
-            direction.y = 0;
-
-            transform.LookAt(player.transform.position);
-            transform.position += direction * speed * Time.deltaTime;
+            //KeepOnGround();
         }
     }
 
@@ -77,4 +73,14 @@ public class Enemy : MonoBehaviour
         GetComponent<Rigidbody>().MovePosition(pos);
         transform.LookAt(player.transform);
     }
+   /*   void KeepOnGround()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1f))
+        {
+            transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+        }
+    }*/
+
 }
