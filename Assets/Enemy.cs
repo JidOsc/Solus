@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,37 +12,31 @@ public class Enemy : MonoBehaviour
     public float obstacleRange = 5f;
 
     private bool _alive;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+
     void Start()
     {
         _alive = true;
         currentHealth = Maxhealth;
+
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (_alive)
+        if (_alive && player != null)
         {
-            transform.Translate(0, 0, speed * Time.deltaTime);
-        }
-
-        Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit hit;
-        if (Physics.SphereCast(ray, 0.75f, out hit))
-        {
-            if (hit.distance < obstacleRange)
-            {
-                float angel = Random.Range(-110, 110);
-                transform.Rotate(0, angel, 0);
-            }
+            FollowPlayer();
+            //KeepOnGround();
         }
     }
 
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
-
         if (currentHealth <= 0)
         {
             Die();
@@ -61,10 +56,31 @@ public class Enemy : MonoBehaviour
 
     public void ReactHoHit()
     {
-        Enemy behavior = GetComponent<Enemy>();
-        if (behavior != null)
+        SetAlive(false);
+    }
+
+    void OnTriggerStay(Collider player)
+    {
+        if (player.tag == "Player")
         {
-            behavior.SetAlive(false);
+            FollowPlayer();
         }
     }
+
+    void FollowPlayer()
+    {
+        Vector3 pos = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        GetComponent<Rigidbody>().MovePosition(pos);
+        transform.LookAt(player.transform);
+    }
+   /*   void KeepOnGround()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1f))
+        {
+            transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+        }
+    }*/
+
 }

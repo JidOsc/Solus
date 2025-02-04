@@ -44,7 +44,8 @@ public class PlayerInteract : MonoBehaviour
                     DroppedOreScript ore = obj.GetComponent<DroppedOreScript>();
 
                     pickedThisFrame = true;
-                    GetComponent<PlayerMain>().AddOre(ore.quantity);
+                    gameObject.GetComponent<PlayerMain>().AddOre(ore.quantity);
+                    Debug.Log(ore.quantity);
                     objectsToRemove.Add(obj);
                 }
             }

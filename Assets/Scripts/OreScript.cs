@@ -9,7 +9,7 @@ public class OreScript : MonoBehaviour
 
 
     void DropOre(float quantity)
-    {
+    {   
         Vector2 pos = Random.insideUnitCircle;
         DroppedOreScript new_ore = Instantiate(droppedOrePrefab, transform.position + new Vector3(pos.x, 0, pos.y) * 2, Quaternion.identity, transform.parent).GetComponent<DroppedOreScript>();
         new_ore.quantity = quantity;
