@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI; // Import UI library
 
+
 public class PlayerMain : MonoBehaviour
 {
     public float walkSpeed = 5f;
@@ -8,8 +9,8 @@ public class PlayerMain : MonoBehaviour
     public float jumpForce = 7f;
     public float gravity = 10f;
     public float health = 7f;
-    public int ore; 
-
+    public float ore = 0;
+    
     public float maxStamina = 100f;
     public float stamina;
     public float staminaDrainRate = 20f;
@@ -84,6 +85,8 @@ public class PlayerMain : MonoBehaviour
 
     public void AddOre(float quantity)
     {
-
+        ore += quantity;
+        
     }
+ 
 }
