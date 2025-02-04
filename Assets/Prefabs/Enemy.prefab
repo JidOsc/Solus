@@ -9,9 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2437550263565807745}
+<<<<<<< Updated upstream
   - component: {fileID: 4099245844688205651}
   - component: {fileID: 1555495396155975979}
   - component: {fileID: 8649352284212506256}
+=======
+  - component: {fileID: 2086623262388037717}
+  - component: {fileID: 6012649353701452803}
+>>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -34,7 +39,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 --- !u!61 &4099245844688205651
+=======
+--- !u!61 &2086623262388037717
+>>>>>>> Stashed changes
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,16 +80,27 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
+<<<<<<< Updated upstream
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2, y: 2.52}
     newSize: {x: 2, y: 2.52}
     adaptiveTilingThreshold: 0.5
+=======
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+>>>>>>> Stashed changes
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+<<<<<<< Updated upstream
 --- !u!114 &1555495396155975979
+=======
+--- !u!114 &6012649353701452803
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,10 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d1c76439998ceb4a95d194f2b193829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  health: 100
-  damage: 10
-  obstacleRange: 5
+<<<<<<< Updated upstream
+  Player: {fileID: 9118517663248347731, guid: 9a71dd38edbb3564eaba1ac1c7de98de, type: 3}
+  player: {fileID: 7063599584404908031, guid: 9a71dd38edbb3564eaba1ac1c7de98de, type: 3}
+  speed: 5
 --- !u!212 &8649352284212506256
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -151,3 +171,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+=======
+  speed: 2
+>>>>>>> Stashed changes
