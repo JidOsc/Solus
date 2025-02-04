@@ -33,19 +33,35 @@ public class VerticalBox : MonoBehaviour
 
     public void SettingsButtonPressed()
     {
-        PlayerPrefs.SetFloat("SENSITIVITY", 400f);
-        PlayerPrefs.Save();
+        
     }
 
     public void CreditsButtonPressed()
     {
-        GameObject credits = transform.Find("CreditsText").gameObject;
 
-        credits.SetActive(!credits.activeSelf);
     }
 
     public void ExitButtonPressed()
     {
         Application.Quit();
+    }
+
+    public void ToggledFullscreen(bool state)
+    {
+        Screen.fullScreen = state;
+    }
+
+    public void ChangedSensitivity(string value)
+    {
+        int new_value = int.Parse(value);
+
+        PlayerPrefs.SetFloat("SENSITIVITY", new_value);
+        PlayerPrefs.Save();
+    }
+
+    public void ChangedVolume(float value)
+    {
+        PlayerPrefs.SetFloat("VOLUME", value);
+        PlayerPrefs.Save();
     }
 }
