@@ -1,34 +1,29 @@
 using UnityEngine;
 
-public class OreScript : MonoBehaviour
+public class OreScript : RotationObject
 {
     public GameObject droppedOrePrefab;
 
     short timesToMine = 5;
     float orePerMine = 1;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        LookatPlayer();
     }
 
-    void DropOre()
+    void DropOre(float quantity)
     {
         Vector2 pos = Random.insideUnitCircle;
-        Instantiate(droppedOrePrefab, transform.position + new Vector3(pos.x, 0, pos.y) * 2, Quaternion.identity, transform.parent);
+        DroppedOreScript new_ore = Instantiate(droppedOrePrefab, transform.position + new Vector3(pos.x, 0, pos.y) * 2, Quaternion.identity, transform.parent).GetComponent<DroppedOreScript>();
+        new_ore.quantity = quantity;
     }
 
     public bool Mine()
     {
         timesToMine--;
-        DropOre();
+        DropOre(orePerMine);
 
         if(timesToMine <= 0)
         {
