@@ -320,7 +320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0.000015258789}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1374210074000794919
@@ -375,11 +375,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 8287907294716906164}
   lines:
-  - testing 1, very first test
-  - testing 2, very second test
-  - testing 3, very third test
-  - testing 4, very fourth test
-  textSpeed: 0.1
+  - Press C to view the next piece of text and X to view the previous.
+  - You've found ore! Press right mouse button to mine it!
+  - You've mined ore! Press ??? to pick it up!
+  - Oh no! You've encountered a wild beast! Defend yourself!
+  - 
+  - 
+  - 
+  - 
+  textSpeed: 0.05
+  textIndex: 0
 --- !u!1 &3203722573940053398
 GameObject:
   m_ObjectHideFlags: 0
