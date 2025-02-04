@@ -41,10 +41,10 @@ public class PlayerInteract : MonoBehaviour
                 //if player picks up ore
                 if (!pickedThisFrame && Input.GetMouseButtonDown(0))
                 {
-                    GetComponent<PlayerMovement>().ore += 1;
                     pickedThisFrame = true;
+                    
 
-                    Debug.Log(GetComponent<PlayerMovement>().ore);
+                    GetComponent<PlayerMain>().AddOre();
                     objectsToRemove.Add(obj);
                 }
             }

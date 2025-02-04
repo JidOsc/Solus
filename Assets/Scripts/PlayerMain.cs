@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI; // Import UI library
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMain : MonoBehaviour
 {
     public float walkSpeed = 5f;
     public float sprintSpeed = 10f;
@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
        
     }
 
-    public void addOre(float quantity)
+    public void AddOre(float quantity)
     {
 
     }
