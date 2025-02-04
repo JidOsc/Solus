@@ -21,17 +21,18 @@ public class OreScript : MonoBehaviour
     void DropOre()
     {
         Vector2 pos = Random.insideUnitCircle;
-        Instantiate(droppedOrePrefab, transform.position + new Vector3(pos.x, 0, pos.y) * 2, Quaternion.identity, transform);
+        Instantiate(droppedOrePrefab, transform.position + new Vector3(pos.x, 0, pos.y) * 2, Quaternion.identity, transform.parent);
     }
 
-    public void Mine()
+    public bool Mine()
     {
         oreLeft -= 0.2f;
         DropOre();
 
         if(oreLeft < 0.2f)
         {
-            //Destroy(gameObject);
+            return true;
         }
+        return false;
     }
 }
