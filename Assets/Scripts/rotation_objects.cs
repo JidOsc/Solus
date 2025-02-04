@@ -18,7 +18,8 @@ public class rotation_objets : MonoBehaviour
     void Update()
     {
         player_pos = player.transform.position;
+        player_pos.y = transform.position.y;
 
-        transform.LookAt(new Vector3(player_pos.x, 0, player_pos.z));
+        transform.LookAt(player_pos);
     }
 }
