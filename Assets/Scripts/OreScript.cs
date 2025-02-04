@@ -1,17 +1,12 @@
 using UnityEngine;
 
-public class OreScript : RotationObject
+public class OreScript : MonoBehaviour
 {
     public GameObject droppedOrePrefab;
 
     short timesToMine = 5;
     float orePerMine = 1;
 
-    
-    void Update()
-    {
-        LookatPlayer();
-    }
 
     void DropOre(float quantity)
     {
