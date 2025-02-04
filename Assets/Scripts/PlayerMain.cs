@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI; // Import UI library
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMain : MonoBehaviour
 {
     public float walkSpeed = 5f;
     public float sprintSpeed = 10f;
@@ -78,5 +78,12 @@ public class PlayerMovement : MonoBehaviour
 
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+       
+    }
+
+    public void AddOre(float quantity)
+    {
+
     }
 }

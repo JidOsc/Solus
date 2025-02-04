@@ -4,7 +4,8 @@ public class OreScript : MonoBehaviour
 {
     public GameObject droppedOrePrefab;
 
-    float oreLeft = 1.0f;
+    short timesToMine = 5;
+    float orePerMine = 1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,10 +27,10 @@ public class OreScript : MonoBehaviour
 
     public bool Mine()
     {
-        oreLeft -= 0.2f;
+        timesToMine--;
         DropOre();
 
-        if(oreLeft < 0.2f)
+        if(timesToMine <= 0)
         {
             return true;
         }

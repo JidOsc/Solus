@@ -41,19 +41,19 @@ public class PlayerInteract : MonoBehaviour
                 //if player picks up ore
                 if (!pickedThisFrame && Input.GetMouseButtonDown(0))
                 {
-                    GetComponent<PlayerMovement>().ore += 1;
                     pickedThisFrame = true;
+                    
 
-                    Debug.Log(GetComponent<PlayerMovement>().ore);
-                    objectsToRemove.Add(obj.transform.parent.gameObject);
+                    GetComponent<PlayerMain>().AddOre(1);
+                    objectsToRemove.Add(obj);
                 }
             }
         }
 
-        foreach(GameObject obj in objectsToRemove)
+        for(int i = 0; i < objectsToRemove.Count; i++)
         {
-            interactableObjects.Remove(obj);
-            //Destroy(obj);
+            interactableObjects.Remove(objectsToRemove[i]);
+            Destroy(objectsToRemove[i]);
         }
         objectsToRemove.Clear();
     }
