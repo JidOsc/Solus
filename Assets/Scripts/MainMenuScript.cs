@@ -6,7 +6,6 @@ public class VerticalBox : MonoBehaviour
 {
     public int MARGIN = 20;
 
-
     void Update()
     {
         short ApplicableItems = 0;
@@ -54,6 +53,7 @@ public class VerticalBox : MonoBehaviour
     public void ChangedSensitivity(string value)
     {
         int new_value = int.Parse(value);
+        //
 
         PlayerPrefs.SetFloat("SENSITIVITY", new_value);
         PlayerPrefs.Save();
