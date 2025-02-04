@@ -2,11 +2,22 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public GameObject player;
+<<<<<<< Updated upstream
+    public Transform player;
+    public float speed = 2f;
+
+    void Update()
+    {
+        if (player != null)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        }
+    }
+}
+=======
 
     public float speed = 2f;
-    public int Maxhealth = 100;
-    public int currentHealth;
+    public int health = 100;
     public int damage = 10;
     public float obstacleRange = 5f;
 
@@ -15,7 +26,6 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         _alive = true;
-        currentHealth = Maxhealth;
     }
 
     // Update is called once per frame
@@ -38,22 +48,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int amount)
-    {
-        currentHealth -= amount;
-
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-    }
-
-    public void Die()
-    {
-        Debug.Log("Enemy died!");
-        Destroy(gameObject);
-    }
-
     public void SetAlive(bool alive)
     {
         _alive = alive;
@@ -66,5 +60,7 @@ public class Enemy : MonoBehaviour
         {
             behavior.SetAlive(false);
         }
+        //StartCoroutine(Die());?????????????????????????
     }
 }
+>>>>>>> Stashed changes
