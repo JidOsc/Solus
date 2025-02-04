@@ -9,7 +9,7 @@ public class Text : MonoBehaviour
     public string[] lines;
     public float textSpeed;
 
-    private int index;
+    public int textIndex;
 
     void Start()
     {
@@ -19,33 +19,33 @@ public class Text : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(key: KeyCode.C) && index < 3)
+        if (Input.GetKeyDown(key: KeyCode.C) && textIndex < 7) //sifran behöver ändras till max antalet i arrayn om man ändrar det, alltså max-1 för den börjar på 0
         {
-            if (textComponent.text == lines[index])
+            if (textComponent.text == lines[textIndex])
             {
                 NextLine();
             }
             else
             {
                 StopAllCoroutines();
-                textComponent.text = lines[index];
+                textComponent.text = lines[textIndex];
             }
         }
-        else if (Input.GetKeyDown(key: KeyCode.X) && index > 0)
+        else if (Input.GetKeyDown(key: KeyCode.X) && textIndex > 0)
         {
-            if (textComponent.text == lines[index])
+            if (textComponent.text == lines[textIndex])
             {
                 PastLine();
             }
             else
             {
                 StopAllCoroutines();
-                textComponent.text = lines[index];
+                textComponent.text = lines[textIndex];
             }
         }
-        else if (Input.GetKeyDown(key: KeyCode.X) && index == 3)
+        else if (Input.GetKeyDown(key: KeyCode.X) && textIndex == 7) //samma sak med denna siffran som den översta
         {
-            if (textComponent.text == lines[index])
+            if (textComponent.text == lines[textIndex])
             {
                 
                 PastLine();
@@ -53,7 +53,7 @@ public class Text : MonoBehaviour
             else
             {
                 StopAllCoroutines();
-                textComponent.text = lines[index];
+                textComponent.text = lines[textIndex];
             }
         }
         else { }
@@ -61,13 +61,13 @@ public class Text : MonoBehaviour
 
     void StartText()
     {
-        index = 0;
+        textIndex = 0;
         StartCoroutine(TypeLine());
     }
 
     IEnumerator TypeLine()
     {
-        foreach (char c in lines[index].ToCharArray())
+        foreach (char c in lines[textIndex].ToCharArray())
         {
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
@@ -76,9 +76,9 @@ public class Text : MonoBehaviour
 
     void NextLine()
     {
-        if (index < lines.Length - 1)
+        if (textIndex < lines.Length - 1)
         {
-            index++;
+            textIndex++;
             textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
         }
@@ -90,9 +90,9 @@ public class Text : MonoBehaviour
 
     void PastLine()
     {
-        if (index < lines.Length)
+        if (textIndex < lines.Length)
         {
-            index--;
+            textIndex--;
             textComponent.text = string.Empty;
             StartCoroutine (TypeLine());
         }
