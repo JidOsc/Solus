@@ -44,7 +44,7 @@ public class PlayerInteract : MonoBehaviour
                     pickedThisFrame = true;
                     
 
-                    GetComponent<PlayerMain>().AddOre();
+                    GetComponent<PlayerMain>().AddOre(1);
                     objectsToRemove.Add(obj);
                 }
             }
