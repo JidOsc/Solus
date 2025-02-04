@@ -19,7 +19,7 @@ public class Text : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(key: KeyCode.C))
+        if (Input.GetKeyDown(key: KeyCode.C) && index < 3)
         {
             if (textComponent.text == lines[index])
             {
@@ -31,9 +31,9 @@ public class Text : MonoBehaviour
                 textComponent.text = lines[index];
             }
         }
-        else if (Input.GetKeyDown(key: KeyCode.X))
+        else if (Input.GetKeyDown(key: KeyCode.X) && index > 0)
         {
-            if(textComponent.text == lines[index])
+            if (textComponent.text == lines[index])
             {
                 PastLine();
             }
@@ -43,6 +43,20 @@ public class Text : MonoBehaviour
                 textComponent.text = lines[index];
             }
         }
+        else if (Input.GetKeyDown(key: KeyCode.X) && index == 3)
+        {
+            if (textComponent.text == lines[index])
+            {
+                
+                PastLine();
+            }
+            else
+            {
+                StopAllCoroutines();
+                textComponent.text = lines[index];
+            }
+        }
+        else { }
     }
 
     void StartText()
@@ -65,7 +79,7 @@ public class Text : MonoBehaviour
         if (index < lines.Length - 1)
         {
             index++;
-            textComponent.text += string.Empty;
+            textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
         }
         else
@@ -76,10 +90,10 @@ public class Text : MonoBehaviour
 
     void PastLine()
     {
-        if (index > lines.Length - 1)
+        if (index < lines.Length)
         {
             index--;
-            textComponent.text += string.Empty;
+            textComponent.text = string.Empty;
             StartCoroutine (TypeLine());
         }
         else
