@@ -49,10 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 9118517663248347731, guid: 9a71dd38edbb3564eaba1ac1c7de98de, type: 3}
-  speed: 2
+  speed: 5
   Maxhealth: 100
   currentHealth: 0
-  damage: 10
+  damage: 2
   obstacleRange: 5
 --- !u!212 &8649352284212506256
 SpriteRenderer:
