@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 [ExecuteInEditMode]
 public class VerticalBox : MonoBehaviour
 {
     public int MARGIN = 20;
+    public GameObject sensitivity_field;
 
     void Update()
     {
@@ -52,7 +54,7 @@ public class VerticalBox : MonoBehaviour
 
     public void ChangedSensitivity(string value)
     {
-        int new_value = int.Parse(value);
+        int new_value = int.Parse(sensitivity_field.GetComponent<TMP_InputField>().text);
         //
 
         PlayerPrefs.SetFloat("SENSITIVITY", new_value);
