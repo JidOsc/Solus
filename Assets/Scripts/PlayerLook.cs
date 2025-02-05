@@ -1,11 +1,14 @@
 using UnityEngine;
 
+
 public class PlayerLook : MonoBehaviour
 {
     public float sensitivity = 100f; // Mouse sensitivity
     public Transform playerBody; // Reference to the player body (for horizontal rotation)
 
     private float xRotation = 0f;
+
+    public PlayerMain playerMain; 
 
     void Start()
     {
@@ -27,5 +30,12 @@ public class PlayerLook : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Restrict vertical rotation
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
+        if (playerMain.health <= 0)
+        {
+            Cursor.visible = true; // Show the cursor
+            Cursor.lockState = CursorLockMode.None; //
+        }
+        
     }
 }

@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivity: 300
   playerBody: {fileID: 357494504987066117}
+  playerMain: {fileID: 7624358632751155401}
 --- !u!1 &7393176407337172850
 GameObject:
   m_ObjectHideFlags: 0
