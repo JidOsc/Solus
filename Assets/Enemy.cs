@@ -1,5 +1,5 @@
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,16 +8,16 @@ public class Enemy : MonoBehaviour
     public float speed = 2f;
     public int Maxhealth = 100;
     public int currentHealth;
-    public int damage = 10;
+    public int damage = 2;
     public float obstacleRange = 5f;
-
     private bool _alive;
-
+    private bool isTakingDamage;
 
     void Start()
     {
         _alive = true;
         currentHealth = Maxhealth;
+        isTakingDamage = false;
 
         if (player == null)
         {
@@ -30,7 +30,11 @@ public class Enemy : MonoBehaviour
         if (_alive && player != null)
         {
             FollowPlayer();
-            //KeepOnGround();
+
+            if (Vector3.Distance(transform.position, player.transform.position) <= 2)
+            {
+                player.GetComponent<PlayerMain>().TakeDamage(5);
+            }
         }
     }
 
@@ -64,6 +68,10 @@ public class Enemy : MonoBehaviour
         if (player.tag == "Player")
         {
             FollowPlayer();
+            if (!isTakingDamage)
+            {
+                StartCoroutine(DamageOverTime(5, 5));
+            }
         }
     }
 
@@ -71,16 +79,16 @@ public class Enemy : MonoBehaviour
     {
         Vector3 pos = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         GetComponent<Rigidbody>().MovePosition(pos);
-
     }
-   /*   void KeepOnGround()
+
+    IEnumerator DamageOverTime(int damageAmount, float interval)
     {
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1f))
+        isTakingDamage = true;
+        while (_alive && player != null && Vector3.Distance(transform.position, player.transform.position) <= 2)
         {
-            transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+            TakeDamage(damageAmount);
+            yield return new WaitForSeconds(interval);
         }
-    }*/
-
+        isTakingDamage = false;
+    }
 }
