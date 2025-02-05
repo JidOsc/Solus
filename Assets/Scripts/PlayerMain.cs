@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.UI; // Import UI library
 using UnityEngine.SceneManagement;
 
-
-
 public class PlayerMain : MonoBehaviour
 {
     public float walkSpeed = 5f;
@@ -12,6 +10,10 @@ public class PlayerMain : MonoBehaviour
     public float gravity = 10f;
     public float health = 10f;
     public float ore = 0;
+
+    public float backflipDuration = 1f;  // Duration of the backflip effect
+    private float currentBackflipTime = 0f;
+    private bool isBackflipping = false;
 
     public Camera playerCamera; // Assign your main camera in the inspector
     public float normalFOV = 60f;
@@ -32,6 +34,10 @@ public class PlayerMain : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
     private bool isGrounded;
+
+    // Cooldown timer for backflip
+    private float backflipCooldown = 1f; // 1 second cooldown
+    private float backflipCooldownTimer = 0f; // Timer for tracking the cooldown
 
     void Start()
     {
@@ -94,19 +100,32 @@ public class PlayerMain : MonoBehaviour
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-
         if (Input.GetKeyDown(KeyCode.F)) // Press Space to attack
         {
             Attack();
         }
 
+        // Handle backflip input
+        if (Input.GetKeyDown(KeyCode.B) && backflipCooldownTimer <= 0f) // If the player presses B and cooldown is over
+        {
+            StartBackflip();
+        }
+
+        if (isBackflipping)
+        {
+            PerformBackflip();
+        }
+
+        // Handle backflip cooldown timer
+        if (backflipCooldownTimer > 0f)
+        {
+            backflipCooldownTimer -= Time.deltaTime; // Countdown the cooldown timer
+        }
     }
 
     public void AddOre(float quantity)
     {
         ore += quantity;
-
-
     }
 
     public void TakeDamage(int damage)
@@ -142,10 +161,33 @@ public class PlayerMain : MonoBehaviour
                 }
             }
         }
-
-
-
     }
 
- 
+    void StartBackflip()
+    {
+        isBackflipping = true;
+        currentBackflipTime = 0f; // Reset timer
+
+        // Start the cooldown timer
+        backflipCooldownTimer = backflipCooldown;
+    }
+
+    void PerformBackflip()
+    {
+        // Update the backflip time
+        currentBackflipTime += Time.deltaTime;
+
+        // Calculate the backflip angle (this goes from 0 to 360 degrees)
+        float backflipAngle = Mathf.Lerp(0f, -360f, currentBackflipTime / backflipDuration);
+
+        // Apply the rotation to the camera (rotate around the x-axis)
+        playerCamera.transform.localRotation = Quaternion.Euler(backflipAngle, 0f, 0f);
+
+        // Stop the backflip once the duration is over
+        if (currentBackflipTime >= backflipDuration)
+        {
+            isBackflipping = false;
+        }
+    }
 }
+
