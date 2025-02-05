@@ -10,7 +10,7 @@ public class PlayerMain : MonoBehaviour
     public float sprintSpeed = 10f;
     public float jumpForce = 7f;
     public float gravity = 10f;
-    public float health = 7f;
+    public float health = 10f;
     public float ore = 0;
 
     public Camera playerCamera; // Assign your main camera in the inspector
