@@ -287,6 +287,10 @@ MonoBehaviour:
   gravity: 10
   health: 7
   ore: 0
+  playerCamera: {fileID: 4963341933482872689}
+  normalFOV: 60
+  sprintFOV: 90
+  fovSpeed: 5
   maxStamina: 100
   stamina: 0
   staminaDrainRate: 20
