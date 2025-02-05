@@ -286,7 +286,7 @@ MonoBehaviour:
   sprintSpeed: 9
   jumpForce: 0.6
   gravity: 10
-  health: 100
+  health: 10
   ore: 0
   backflipDuration: 1
   playerCamera: {fileID: 5445300961687953437}
