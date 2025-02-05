@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
         GetComponent<Rigidbody>().MovePosition(pos);
         Vector3 pos2 = player.transform.position;
         pos2.y = transform.position.y;
-        transform.LookAt(player.transform);
+        transform.LookAt(pos2);
     }
    /*   void KeepOnGround()
     {
