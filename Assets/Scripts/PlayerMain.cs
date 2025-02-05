@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.UI; // Import UI library
 using UnityEngine.SceneManagement;
 
-
-
 public class PlayerMain : MonoBehaviour
 {
     public float walkSpeed = 5f;
@@ -12,6 +10,10 @@ public class PlayerMain : MonoBehaviour
     public float gravity = 10f;
     public float health = 10f;
     public float ore = 0;
+
+    public float backflipDuration = 1f;  // Duration of the backflip effect
+    private float currentBackflipTime = 0f;
+    private bool isBackflipping = false;
 
     public Camera playerCamera; // Assign your main camera in the inspector
     public float normalFOV = 60f;
@@ -23,11 +25,19 @@ public class PlayerMain : MonoBehaviour
     public float staminaDrainRate = 20f;
     public float staminaRegenRate = 15f;
 
+    public Enemy enemy;
+    public int damage = 20;
+    public float attackRange = 4f;
+
     public Slider staminaBar; // Reference to the UI Stamina Bar
 
     private CharacterController controller;
     private Vector3 velocity;
     private bool isGrounded;
+
+    // Cooldown timer for backflip
+    private float backflipCooldown = 1f; // 1 second cooldown
+    private float backflipCooldownTimer = 0f; // Timer for tracking the cooldown
 
     void Start()
     {
@@ -82,22 +92,40 @@ public class PlayerMain : MonoBehaviour
             staminaBar.value = stamina;
         }
 
-       if (Input.GetButton("Jump") && isGrounded)
-{
-    velocity.y = Mathf.Sqrt(jumpForce * 2f * gravity);
-}
+        if (Input.GetButton("Jump") && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpForce * 2f * gravity);
+        }
 
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-       
+        if (Input.GetKeyDown(KeyCode.F)) // Press Space to attack
+        {
+            Attack();
+        }
+
+        // Handle backflip input
+        if (Input.GetKeyDown(KeyCode.B) && backflipCooldownTimer <= 0f) // If the player presses B and cooldown is over
+        {
+            StartBackflip();
+        }
+
+        if (isBackflipping)
+        {
+            PerformBackflip();
+        }
+
+        // Handle backflip cooldown timer
+        if (backflipCooldownTimer > 0f)
+        {
+            backflipCooldownTimer -= Time.deltaTime; // Countdown the cooldown timer
+        }
     }
 
     public void AddOre(float quantity)
     {
         ore += quantity;
-
-
     }
 
     public void TakeDamage(int damage)
@@ -109,5 +137,57 @@ public class PlayerMain : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
- 
+
+    public void DealDamage(Enemy enemy)
+    {
+        if (enemy != null)
+        {
+            enemy.TakeDamage(damage); // Call the enemy's TakeDamage method
+        }
+    }
+
+    void Attack()
+    {
+        Collider[] hitEnemies = Physics.OverlapSphere(transform.position, attackRange);
+
+        foreach (Collider enemyCollider in hitEnemies)
+        {
+            if (enemyCollider.CompareTag("Enemies"))
+            {
+                Enemy enemy = enemyCollider.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    DealDamage(enemy); // Deal damage to the enemy in range
+                }
+            }
+        }
+    }
+
+    void StartBackflip()
+    {
+        isBackflipping = true;
+        currentBackflipTime = 0f; // Reset timer
+
+        // Start the cooldown timer
+        backflipCooldownTimer = backflipCooldown;
+    }
+
+    void PerformBackflip()
+    {
+        // Update the backflip time
+        currentBackflipTime += Time.deltaTime;
+
+        // Calculate the backflip angle (this goes from 0 to 360 degrees)
+        float backflipAngle = Mathf.Lerp(0f, -360f, currentBackflipTime / backflipDuration);
+
+        // Apply the rotation to the camera (rotate around the x-axis)
+        playerCamera.transform.localRotation = Quaternion.Euler(backflipAngle, 0f, 0f);
+
+        // Stop the backflip once the duration is over
+        if (currentBackflipTime >= backflipDuration)
+        {
+            isBackflipping = false;
+        }
+    }
 }
+

@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
     public GameObject player;
 
     public float speed = 2f;
-    public int Maxhealth = 100;
+    public int Maxhealth = 200;
     public int currentHealth;
     public int damage = 2;
     public float obstacleRange = 5f;
@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
             FollowPlayer();
             if (!isTakingDamage)
             {
-                StartCoroutine(DamageOverTime(5, 5));
+                StartCoroutine(DamageOverTime(10,10));
             }
         }
     }
@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour
         Vector3 pos = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         GetComponent<Rigidbody>().MovePosition(pos);
     }
-
+    
     IEnumerator DamageOverTime(int damageAmount, float interval)
     {
         isTakingDamage = true;
