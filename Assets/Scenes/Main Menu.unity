@@ -2532,6 +2532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MARGIN: -7
+  sensitivity_field: {fileID: 1562302224}
 --- !u!4 &1686226140
 Transform:
   m_ObjectHideFlags: 0
