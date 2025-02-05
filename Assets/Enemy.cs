@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
 
             if (Vector3.Distance(transform.position, player.transform.position) <= 10 && !isDealingDamage)
             {
-                StartCoroutine(DealDamageOverTime(5, 5));
+                StartCoroutine(DealDamageOverTime(3, 10));
             }
         }
     }
