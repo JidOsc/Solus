@@ -9,6 +9,7 @@ TagManager:
   - Station
   - DroppedOre
   - RadioTower
+  - Stone
   layers:
   - Default
   - TransparentFX

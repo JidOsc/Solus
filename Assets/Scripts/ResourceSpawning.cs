@@ -11,20 +11,21 @@ public class ResourceSpawning : MonoBehaviour
 
     public List<GameObject> ore_prefabs = new List<GameObject>();
 
-    public Random randy = new Random();
+   
+
+    public int num;
 
     Vector3Int pos = new Vector3Int(1, 14, 1);
 
     void Start()
     {
-        int num; 
-
         for (int i = 0; i < 1; i++)
         {
+            Random randy = new Random((uint)UnityEngine.Random.Range(1,4));
 
-            num = randy.NextInt(0,3);
+            num = randy.NextInt();
 
-            //Instantiate(stone_prefabs[num], pos);
+            Instantiate(stone_prefabs[0], pos, transform.rotation, transform.parent);
         }
     }
 }

@@ -160,8 +160,7 @@ MonoBehaviour:
   - {fileID: 5517096521317074206, guid: 75bb79bc50173bf4ab20ff6677444f40, type: 3}
   ore_prefabs:
   - {fileID: 8326932588880210358, guid: eeab29b0d3ce9954c84f1e77adf49a13, type: 3}
-  randy:
-    state: 0
+  num: 0
 --- !u!1 &6276446696371522973
 GameObject:
   m_ObjectHideFlags: 0
