@@ -160,6 +160,8 @@ MonoBehaviour:
   - {fileID: 5517096521317074206, guid: 75bb79bc50173bf4ab20ff6677444f40, type: 3}
   ore_prefabs:
   - {fileID: 8326932588880210358, guid: eeab29b0d3ce9954c84f1e77adf49a13, type: 3}
+  randy:
+    state: 0
 --- !u!1 &6276446696371522973
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,7 +699,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1699092034084975801, guid: 4b928eda15bd8ba42a2ba3fc96afec98, type: 3}
       propertyPath: m_LocalScale.x
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1699092034084975801, guid: 4b928eda15bd8ba42a2ba3fc96afec98, type: 3}
       propertyPath: m_LocalScale.y
@@ -705,7 +707,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1699092034084975801, guid: 4b928eda15bd8ba42a2ba3fc96afec98, type: 3}
       propertyPath: m_LocalScale.z
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1699092034084975801, guid: 4b928eda15bd8ba42a2ba3fc96afec98, type: 3}
       propertyPath: m_LocalPosition.x
@@ -713,7 +715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1699092034084975801, guid: 4b928eda15bd8ba42a2ba3fc96afec98, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 10.3
       objectReference: {fileID: 0}
     - target: {fileID: 1699092034084975801, guid: 4b928eda15bd8ba42a2ba3fc96afec98, type: 3}
       propertyPath: m_LocalPosition.z
