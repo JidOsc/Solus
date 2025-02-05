@@ -5,10 +5,13 @@
         _MainTex("Water", 2D) = "white" {}
         _Waves("Waves", Float) = 1.0
         _Speed("Speed", Float) = 0.2
+        _Color ("Color (RGBA)", Color) = (1, 1, 1, 1) // add _Color property
     }
         SubShader
     {
-        Tags { "RenderType" = "Opaque" }
+        Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
         LOD 100
 
         Pass
@@ -38,6 +41,7 @@
             float _Speed;
             float _Waves;
             float4 _MainTex_ST;
+            float4 _Color;
 
 
             v2f vert(appdata v)
@@ -55,7 +59,7 @@
             fixed4 frag(v2f i) : SV_Target
             {
                 // sample the texture
-                fixed4 col = tex2D(_MainTex, i.uv);
+                fixed4 col = tex2D(_MainTex, i.uv) * _Color;
 
             // apply fog
             UNITY_APPLY_FOG(i.fogCoord, col);
