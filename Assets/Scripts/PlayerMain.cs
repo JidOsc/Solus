@@ -135,6 +135,7 @@ public class PlayerMain : MonoBehaviour
         if (health <= 0)
         {
             SceneManager.LoadScene(0);
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
