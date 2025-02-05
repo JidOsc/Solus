@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI; // Import UI library
+using UnityEngine.SceneManagement;
+
 
 
 public class PlayerMain : MonoBehaviour
@@ -94,7 +96,18 @@ public class PlayerMain : MonoBehaviour
     public void AddOre(float quantity)
     {
         ore += quantity;
-        
+
+
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
  
 }
