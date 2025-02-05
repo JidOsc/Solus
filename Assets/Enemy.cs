@@ -4,20 +4,19 @@ using System.Collections;
 public class Enemy : MonoBehaviour
 {
     public GameObject player;
-
     public float speed = 2f;
-    public int Maxhealth = 200;
+    public int Maxhealth = 100;
     public int currentHealth;
-    public int damage = 2;
+    public int damage = 3;
     public float obstacleRange = 5f;
     private bool _alive;
-    private bool isTakingDamage;
+    private bool isDealingDamage;
 
     void Start()
     {
         _alive = true;
         currentHealth = Maxhealth;
-        isTakingDamage = false;
+        isDealingDamage = false;
 
         if (player == null)
         {
@@ -31,9 +30,9 @@ public class Enemy : MonoBehaviour
         {
             FollowPlayer();
 
-            if (Vector3.Distance(transform.position, player.transform.position) <= 2)
+            if (Vector3.Distance(transform.position, player.transform.position) <= 10 && !isDealingDamage)
             {
-                player.GetComponent<PlayerMain>().TakeDamage(5);
+                StartCoroutine(DealDamageOverTime(3, 10));
             }
         }
     }
@@ -68,10 +67,6 @@ public class Enemy : MonoBehaviour
         if (player.tag == "Player")
         {
             FollowPlayer();
-            if (!isTakingDamage)
-            {
-                StartCoroutine(DamageOverTime(10,10));
-            }
         }
     }
 
@@ -80,15 +75,18 @@ public class Enemy : MonoBehaviour
         Vector3 pos = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         GetComponent<Rigidbody>().MovePosition(pos);
     }
-    
-    IEnumerator DamageOverTime(int damageAmount, float interval)
+
+    IEnumerator DealDamageOverTime(int damageAmount, float interval)
     {
-        isTakingDamage = true;
-        while (_alive && player != null && Vector3.Distance(transform.position, player.transform.position) <= 2)
+        isDealingDamage = true;
+        yield return new WaitForSeconds(interval);
+
+        while (_alive && player != null && Vector3.Distance(transform.position, player.transform.position) <= 10)
         {
-            TakeDamage(damageAmount);
+            player.GetComponent<PlayerMain>().TakeDamage(damageAmount);
             yield return new WaitForSeconds(interval);
         }
-        isTakingDamage = false;
+
+        isDealingDamage = false;
     }
 }

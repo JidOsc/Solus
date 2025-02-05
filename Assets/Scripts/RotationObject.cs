@@ -20,7 +20,7 @@ public class RotationObject : MonoBehaviour
         {
             GameObject obj = tsfm.gameObject;
 
-            if (obj.tag == "Ore" || obj.tag == "Enemies" || obj.tag == "DroppedOre")
+            if (obj.tag == "Ore" || obj.tag == "Enemies" || obj.tag == "DroppedOre" || obj.tag == "RadioTower")
             {
                 player_pos = player.transform.position;
                 player_pos.y = obj.transform.position.y;
