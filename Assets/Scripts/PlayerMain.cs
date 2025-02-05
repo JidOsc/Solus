@@ -72,10 +72,10 @@ public class PlayerMain : MonoBehaviour
             staminaBar.value = stamina;
         }
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpForce * 2f * gravity);
-        }
+       if (Input.GetButton("Jump") && isGrounded)
+{
+    velocity.y = Mathf.Sqrt(jumpForce * 2f * gravity);
+}
 
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
