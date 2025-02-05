@@ -16,7 +16,8 @@ public class OverlayMngr : MonoBehaviour
 
     void Update()
     {
-        PlayerMain playerData = player.transform.Find("Capsule").GetComponent<PlayerMain>();
+        PlayerMain playerData = player.GetComponent<PlayerMain>();
+
         HealthBar healthData = health.GetComponent<HealthBar>();
         healthData.SetHealth((int)playerData.health);
 
