@@ -282,12 +282,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d88d4d7c1d439b4d9d03ace5ecd6461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
-  sprintSpeed: 10
+  walkSpeed: 6
+  sprintSpeed: 9
   jumpForce: 0.6
   gravity: 10
-  health: 7
+  health: 100
   ore: 0
+  backflipDuration: 1
   playerCamera: {fileID: 5445300961687953437}
   normalFOV: 60
   sprintFOV: 90
@@ -296,6 +297,9 @@ MonoBehaviour:
   stamina: 0
   staminaDrainRate: 20
   staminaRegenRate: 15
+  enemy: {fileID: 0}
+  damage: 20
+  attackRange: 4
   staminaBar: {fileID: 0}
 --- !u!143 &8739459620347010922
 CharacterController:
