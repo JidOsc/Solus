@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public float obstacleRange = 5f;
     private bool _alive;
     private bool isDealingDamage;
+    public float followDistance = 10f;
 
     void Start()
     {
@@ -28,9 +29,14 @@ public class Enemy : MonoBehaviour
     {
         if (_alive && player != null)
         {
-            FollowPlayer();
+            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-            if (Vector3.Distance(transform.position, player.transform.position) <= 10 && !isDealingDamage)
+            if (distanceToPlayer <= followDistance)
+            {
+                FollowPlayer();
+            }
+
+            if (distanceToPlayer <= 10 && !isDealingDamage)
             {
                 StartCoroutine(DealDamageOverTime(3, 10));
             }
@@ -72,6 +78,9 @@ public class Enemy : MonoBehaviour
 
     void FollowPlayer()
     {
+        if (Vector3.Distance(transform.position, player.transform.position) > followDistance)
+            return;
+
         Vector3 pos = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         GetComponent<Rigidbody>().MovePosition(pos);
     }
