@@ -23,6 +23,10 @@ public class PlayerMain : MonoBehaviour
     public float staminaDrainRate = 20f;
     public float staminaRegenRate = 15f;
 
+    public Enemy enemy;
+    public int damage = 20;
+    public float attackRange = 4f;
+
     public Slider staminaBar; // Reference to the UI Stamina Bar
 
     private CharacterController controller;
@@ -82,15 +86,20 @@ public class PlayerMain : MonoBehaviour
             staminaBar.value = stamina;
         }
 
-       if (Input.GetButton("Jump") && isGrounded)
-{
-    velocity.y = Mathf.Sqrt(jumpForce * 2f * gravity);
-}
+        if (Input.GetButton("Jump") && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpForce * 2f * gravity);
+        }
 
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-       
+
+        if (Input.GetKeyDown(KeyCode.F)) // Press Space to attack
+        {
+            Attack();
+        }
+
     }
 
     public void AddOre(float quantity)
@@ -109,5 +118,34 @@ public class PlayerMain : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
+
+    public void DealDamage(Enemy enemy)
+    {
+        if (enemy != null)
+        {
+            enemy.TakeDamage(damage); // Call the enemy's TakeDamage method
+        }
+    }
+
+    void Attack()
+    {
+        Collider[] hitEnemies = Physics.OverlapSphere(transform.position, attackRange);
+
+        foreach (Collider enemyCollider in hitEnemies)
+        {
+            if (enemyCollider.CompareTag("Enemies"))
+            {
+                Enemy enemy = enemyCollider.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    DealDamage(enemy); // Deal damage to the enemy in range
+                }
+            }
+        }
+
+
+
+    }
+
  
 }
