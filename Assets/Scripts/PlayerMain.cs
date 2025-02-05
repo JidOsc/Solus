@@ -10,7 +10,12 @@ public class PlayerMain : MonoBehaviour
     public float gravity = 10f;
     public float health = 7f;
     public float ore = 0;
-    
+
+    public Camera playerCamera; // Assign your main camera in the inspector
+    public float normalFOV = 60f;
+    public float sprintFOV = 75f;
+    public float fovSpeed = 5f;
+
     public float maxStamina = 100f;
     public float stamina;
     public float staminaDrainRate = 20f;
@@ -52,6 +57,9 @@ public class PlayerMain : MonoBehaviour
         bool isSprinting = Input.GetKey(KeyCode.LeftShift) && stamina > 0;
         float currentSpeed = isSprinting ? sprintSpeed : walkSpeed;
 
+        float targetFOV = isSprinting ? sprintFOV : normalFOV;
+        playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, targetFOV, Time.deltaTime * fovSpeed);
+
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
         controller.Move(move * currentSpeed * Time.deltaTime);
 
@@ -72,10 +80,10 @@ public class PlayerMain : MonoBehaviour
             staminaBar.value = stamina;
         }
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpForce * 2f * gravity);
-        }
+       if (Input.GetButton("Jump") && isGrounded)
+{
+    velocity.y = Mathf.Sqrt(jumpForce * 2f * gravity);
+}
 
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
