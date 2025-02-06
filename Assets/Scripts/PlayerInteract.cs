@@ -52,7 +52,12 @@ public class PlayerInteract : MonoBehaviour
 
         for(int i = 0; i < objectsToRemove.Count; i++)
         {
-            interactableObjects.Remove(objectsToRemove[i]);    
+            
+            while (interactableObjects.Contains(objectsToRemove[i]))
+            {
+                interactableObjects.Remove(objectsToRemove[i]);
+            }
+
             Destroy(objectsToRemove[i]);
         }
         objectsToRemove.Clear();
