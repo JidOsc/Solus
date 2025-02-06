@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public float speed = 2f;
     public int Maxhealth = 100;
     public int currentHealth;
-    public int damage = 3;
+    public int damage = 2;
     public float obstacleRange = 5f;
     private bool _alive;
     private bool isDealingDamage;
@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
 
             if (distanceToPlayer <= 10 && !isDealingDamage)
             {
-                StartCoroutine(DealDamageOverTime(10, 2));
+                StartCoroutine(DealDamageOverTime(2, 5));
             }
         }
     }
