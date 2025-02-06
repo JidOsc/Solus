@@ -12,7 +12,7 @@ public class PlayerMain : MonoBehaviour
     public float ore = 0;
 
     public float backflipDuration = 1f;  // Duration of the backflip effect
-    private float currentBackflipTime = 0f;
+    private float currentBackflipTime = 1f;
     private bool isBackflipping = false;
 
     public Camera playerCamera; // Assign your main camera in the inspector

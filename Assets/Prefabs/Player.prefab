@@ -288,7 +288,7 @@ MonoBehaviour:
   gravity: 10
   health: 10
   ore: 0
-  backflipDuration: 1
+  backflipDuration: 0.55
   playerCamera: {fileID: 5445300961687953437}
   normalFOV: 60
   sprintFOV: 90
