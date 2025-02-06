@@ -1,4 +1,6 @@
 using UnityEngine;
+using TMPro; 
+
 
 public class OverlayMngr : MonoBehaviour
 {
@@ -7,6 +9,7 @@ public class OverlayMngr : MonoBehaviour
     public GameObject health;
     public GameObject stamina;
     [SerializeField] private Sprite[] images;
+    public GameObject OreText; 
 
 
     void Start()
@@ -23,5 +26,8 @@ public class OverlayMngr : MonoBehaviour
 
         StaminaBar staminaData = stamina.GetComponent<StaminaBar>();
         staminaData.SetStamina((int)playerData.stamina);
+
+        OreText.GetComponent<TMP_Text>().text = playerData.ore.ToString();
+        
     }
 }
