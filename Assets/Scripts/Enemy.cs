@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
 
             if (distanceToPlayer <= 10 && !isDealingDamage)
             {
-                StartCoroutine(DealDamageOverTime(10, 2));
+                StartCoroutine(DealDamageOverTime(3, 5));
             }
         }
     }
