@@ -21,6 +21,8 @@ public class OverlayMngr : MonoBehaviour
     {
         PlayerMain playerData = player.GetComponent<PlayerMain>();
 
+
+
         HealthBar healthData = health.GetComponent<HealthBar>();
         healthData.SetHealth((int)playerData.health);
 
@@ -28,6 +30,9 @@ public class OverlayMngr : MonoBehaviour
         staminaData.SetStamina((int)playerData.stamina);
 
         OreText.GetComponent<TMP_Text>().text = playerData.ore.ToString();
+
+
+
         
     }
 }
