@@ -8,7 +8,8 @@ public class PlayerMain : MonoBehaviour
     public float sprintSpeed = 10f;
     public float jumpForce = 7f;
     public float gravity = 10f;
-    public float health = 10f;
+    public float health;
+    public float maxHealth = 10f; 
     public float ore = 0;
 
     public float backflipDuration = 1f;  // Duration of the backflip effect
@@ -43,6 +44,7 @@ public class PlayerMain : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         stamina = maxStamina;
+        health = maxHealth; 
 
         // Find the stamina bar UI if not assigned
         if (staminaBar == null)
@@ -134,8 +136,13 @@ public class PlayerMain : MonoBehaviour
 
         if (health <= 0)
         {
-            SceneManager.LoadScene(0);
-            Cursor.lockState = CursorLockMode.None;
+            // Sätt positionen till (0, 0, 0)
+            transform.position = new Vector3(0, 0, 0);
+
+            // Sätt ore till 0
+            ore = 0;
+            health = maxHealth; 
+            
         }
     }
 
