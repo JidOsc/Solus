@@ -22,7 +22,7 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
 
-            if (obj.tag == "Ore")
+            else if (obj.tag == "Ore")
             {
                 //if player is mining
                 if (Input.GetMouseButtonDown(1))
@@ -30,13 +30,13 @@ public class PlayerInteract : MonoBehaviour
                     OreScript ore = obj.GetComponent<OreScript>();
                     if (ore.Mine())
                     {
-                        objectsToRemove.Add(obj);
+                        objectsToRemove.Add(obj.gameObject);
                     }
                     Debug.Log("Högg!");
                 }
             }
 
-            if (obj.tag == "DroppedOre")
+            else if (obj.tag == "DroppedOre")
             {
                 //if player picks up ore
                 if (!pickedThisFrame && Input.GetMouseButtonDown(0))
@@ -45,7 +45,7 @@ public class PlayerInteract : MonoBehaviour
 
                     pickedThisFrame = true;
                     gameObject.GetComponent<PlayerMain>().AddOre(ore.quantity);
-                    objectsToRemove.Add(obj);
+                    objectsToRemove.Add(obj.gameObject);
                 }
             }
         }
