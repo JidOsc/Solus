@@ -51,7 +51,7 @@ MonoBehaviour:
   speed: 2
   Maxhealth: 200
   currentHealth: 0
-  damage: 3
+  damage: 2
   obstacleRange: 5
   followDistance: 10
 --- !u!212 &8649352284212506256
@@ -158,4 +158,4 @@ CapsuleCollider:
   m_Radius: 3
   m_Height: 15
   m_Direction: 1
-  m_Center: {x: 0, y: -5, z: 0}
+  m_Center: {x: 0, y: -2, z: 0}
