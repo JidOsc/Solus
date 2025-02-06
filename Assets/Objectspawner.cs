@@ -12,7 +12,7 @@ public class Objectspawner : MonoBehaviour
 
     void Start()
     {              
-        for (int i = 0; i < 150; i++)
+        for (int i = 0; i < 200; i++)
         {
             int stone_num = Random.Range(0, 4);
             int x = Random.Range(-200, 200);
@@ -42,7 +42,7 @@ public class Objectspawner : MonoBehaviour
             spawning.transform.parent = level.transform;
         }
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 10; i++)
         {
             int x = Random.Range(-200, 200);
             int z = Random.Range(-200, 200);
