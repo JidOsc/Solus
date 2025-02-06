@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 public class PlayerInteract : MonoBehaviour
 {
-    List<GameObject> interactableObjects = new List<GameObject>();
-    List<GameObject> objectsToRemove = new List<GameObject>();
+    public List<GameObject> interactableObjects = new List<GameObject>();
+    public List<GameObject> objectsToRemove = new List<GameObject>();
 
     bool pickedThisFrame = false;
 
