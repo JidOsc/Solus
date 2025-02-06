@@ -45,7 +45,6 @@ public class PlayerInteract : MonoBehaviour
 
                     pickedThisFrame = true;
                     gameObject.GetComponent<PlayerMain>().AddOre(ore.quantity);
-                    Debug.Log(ore.quantity);
                     objectsToRemove.Add(obj);
                 }
             }
@@ -53,7 +52,7 @@ public class PlayerInteract : MonoBehaviour
 
         for(int i = 0; i < objectsToRemove.Count; i++)
         {
-            interactableObjects.Remove(objectsToRemove[i]);
+            interactableObjects.Remove(objectsToRemove[i]);    
             Destroy(objectsToRemove[i]);
         }
         objectsToRemove.Clear();
