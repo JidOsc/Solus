@@ -18,7 +18,13 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Tab))
                 {
-                    //if player interacts with the building
+                    StationScript station = obj.GetComponent<StationScript>();
+                    PlayerMain player = GetComponent<PlayerMain>();
+
+                    if(player.ore >= station.CurrentCost())
+                    {
+                        station.Repair();
+                    }
                 }
             }
 
