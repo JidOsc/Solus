@@ -10,6 +10,7 @@ TagManager:
   - DroppedOre
   - RadioTower
   - Stone
+  - Water
   layers:
   - Default
   - TransparentFX

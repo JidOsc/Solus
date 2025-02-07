@@ -15,6 +15,8 @@ public class PlayerMain : MonoBehaviour
     public float backflipDuration = 1f;  // Duration of the backflip effect
     private float currentBackflipTime = 1f;
     private bool isBackflipping = false;
+    private AudioSource audioSource;
+    private bool isMoving = false;
 
     public Camera playerCamera; // Assign your main camera in the inspector
     public float normalFOV = 60f;
@@ -35,10 +37,12 @@ public class PlayerMain : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
     private bool isGrounded;
+    private bool onWater = false;
 
     // Cooldown timer for backflip
     private float backflipCooldown = 1f; // 1 second cooldown
     private float backflipCooldownTimer = 0f; // Timer for tracking the cooldown
+    [SerializeField] GameObject water;
 
     void Start()
     {
@@ -54,6 +58,8 @@ public class PlayerMain : MonoBehaviour
 
         staminaBar.maxValue = maxStamina;
         staminaBar.value = stamina;
+
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -97,10 +103,13 @@ public class PlayerMain : MonoBehaviour
         if (Input.GetButton("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpForce * 2f * gravity);
+
         }
 
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        //gameObject.transform.GetChild(1).GetComponent<Transform>().position = gameObject.transform.position;
 
         if (Input.GetKeyDown(KeyCode.F)) // Press Space to attack
         {
@@ -122,6 +131,26 @@ public class PlayerMain : MonoBehaviour
         if (backflipCooldownTimer > 0f)
         {
             backflipCooldownTimer -= Time.deltaTime; // Countdown the cooldown timer
+        }
+
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) 
+        {
+    
+
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
+        if (isMoving && !audioSource.isPlaying && onWater == false)
+        {
+            audioSource.Play();
+        }
+        if (!isMoving)
+        {
+            audioSource.Stop();
+            
         }
     }
 
@@ -166,6 +195,7 @@ public class PlayerMain : MonoBehaviour
                 if (enemy != null)
                 {
                     DealDamage(enemy); // Deal damage to the enemy in range
+
                 }
             }
         }
@@ -197,5 +227,34 @@ public class PlayerMain : MonoBehaviour
             isBackflipping = false;
         }
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Water")
+        {
+            audioSource.Stop();
+        }
+    }
+
+    
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "triggerhappy")
+        {
+            onWater = true;
+            audioSource.Stop();
+        }
+        if (other.gameObject.name == "sandhappy")
+        {
+            onWater = false;
+            audioSource.Play();
+        }
+
+    }
+
+    
+
+    
 }
 
