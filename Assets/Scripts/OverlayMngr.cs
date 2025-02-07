@@ -6,7 +6,12 @@ public class OverlayMngr : MonoBehaviour
 {
     //OverlayMngr ska ha koll på allt i Overlay prefaben
     public GameObject player;
+
     public GameObject health;
+    public GameObject damagedImage;
+    private int current_health = 0;
+
+
     public GameObject stamina;
     [SerializeField] private Sprite[] images;
     public GameObject OreText; 
@@ -24,7 +29,16 @@ public class OverlayMngr : MonoBehaviour
 
 
         HealthBar healthData = health.GetComponent<HealthBar>();
+        if(playerData.health < current_health)
+        {
+            damagedImage.SetActive(true);
+        }
+        else
+        {
+            damagedImage.SetActive(false);
+        }
         healthData.SetHealth((int)playerData.health);
+        current_health = (int)playerData.health;
 
         StaminaBar staminaData = stamina.GetComponent<StaminaBar>();
         staminaData.SetStamina((int)playerData.stamina);

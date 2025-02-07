@@ -119,8 +119,6 @@
 
             float4 frag(v2f i) : SV_Target
             {
-                // sample the texture
-
                 //depth
                 float existingDepth01 = tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(i.screenPosition)).r;
                 float existingDepthLinear = LinearEyeDepth(existingDepth01);
