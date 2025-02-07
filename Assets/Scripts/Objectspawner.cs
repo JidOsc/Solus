@@ -12,11 +12,11 @@ public class Objectspawner : MonoBehaviour
 
     void Start()
     {              
-        for (int i = 0; i < 200; i++)
+        for (int i = 0; i < 10000; i++)
         {
             int stone_num = Random.Range(0, 4);
-            int x = Random.Range(-200, 200);
-            int z = Random.Range(-200, 200);
+            int x = Random.Range(-900, 900);
+            int z = Random.Range(-900, 900);
             float rotY = Random.Range(0, 360);
             //float rotZ = Random.Range(0, 360);
             Vector3 pos = new Vector3(x, 0, z);
@@ -30,8 +30,8 @@ public class Objectspawner : MonoBehaviour
 
         for (int i = 0; i < 50; i++)
         {
-            int x = Random.Range(-200, 200);
-            int z = Random.Range(-200, 200);
+            int x = Random.Range(-500, 500);
+            int z = Random.Range(-500, 500);
             //float rotZ = Random.Range(0, 360);
             Vector3 pos = new Vector3(x, 0, z);
             //int hight = (int)Terrain.activeTerrain.terrainData.GetHeight(x, z) + 8;
@@ -42,10 +42,10 @@ public class Objectspawner : MonoBehaviour
             spawning.transform.parent = level.transform;
         }
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 200; i++)
         {
-            int x = Random.Range(-200, 200);
-            int z = Random.Range(-200, 200);
+            int x = Random.Range(-1000, 1000);
+            int z = Random.Range(-1000, 1000);
             //float rotZ = Random.Range(0, 360);
             Vector3 pos = new Vector3(x, 0, z);
             //int hight = (int)Terrain.activeTerrain.terrainData.GetHeight(x, z) + 8;
