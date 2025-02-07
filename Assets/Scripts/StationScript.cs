@@ -8,20 +8,6 @@ public class StationScript : MonoBehaviour
     int[] stage_cost = new int[] { 7 }; //stage i innebär att kostnaden är stage_cost[i], stage_cost.length ska alltid vara lika stor som AMOUNT_OF_STAGES
     short stage = 0;
 
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public int CurrentCost()
     {
         return stage_cost[stage];
@@ -33,6 +19,8 @@ public class StationScript : MonoBehaviour
 
         if(stage >= AMOUNT_OF_STAGES)
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene(0);
         }
     }
