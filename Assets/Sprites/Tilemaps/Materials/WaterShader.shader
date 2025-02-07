@@ -91,7 +91,6 @@
 
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.noiseUV = TRANSFORM_TEX(v.uv, _SurfaceNoise);
                 
                 o.screenPosition = ComputeScreenPos(o.vertex);
 				o.noiseUV = TRANSFORM_TEX(v.uv, _SurfaceNoise);
@@ -121,7 +120,6 @@
             float4 frag(v2f i) : SV_Target
             {
                 // sample the texture
-                fixed4 col = tex2D(_SurfaceNoise, i.noiseUV);
 
                 //depth
                 float existingDepth01 = tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(i.screenPosition)).r;
@@ -136,8 +134,9 @@
 				float foamDepthDifference01 = saturate(depthDifference / foamDistance);
 				float surfaceNoiseCutoff = foamDepthDifference01 * _SurfaceNoiseCutoff;
                 
-                float2 noiseUV = float2((i.noiseUV.x + _Time.y * _SurfaceNoiseScroll.x), 
-				(i.noiseUV.y + _Time.y * _SurfaceNoiseScroll.y));
+                float2 noiseUV = float2((i.noiseUV.x + _Time.y * _SurfaceNoiseScroll.x), (i.noiseUV.y + _Time.y * _SurfaceNoiseScroll.y));
+                fixed4 col = tex2D(_SurfaceNoise, noiseUV);
+
 				float surfaceNoiseSample = tex2D(_SurfaceNoise, noiseUV).r;
                 float surfaceNoise = smoothstep(surfaceNoiseCutoff - SMOOTHSTEP_AA, surfaceNoiseCutoff + SMOOTHSTEP_AA, surfaceNoiseSample);
 				float4 surfaceNoiseColor = _FoamColor;
