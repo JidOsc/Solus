@@ -20,6 +20,8 @@
 		// Noise texture used to generate waves.
 		_SurfaceNoise("Surface Noise", 2D) = "white" {}
 
+        _SurfaceOpacity("Surface Opacity", Float) = 0.5
+
 		// Speed, in UVs per second the noise will scroll. Only the xy components are used.
 		_SurfaceNoiseScroll("Surface Noise Scroll Amount", Vector) = (0.03, 0.03, 0, 0)
 
@@ -80,6 +82,7 @@
 
             sampler2D _SurfaceNoise;
 			float4 _SurfaceNoise_ST;
+            float _SurfaceOpacity;
 
             v2f vert(appdata v)
             {
@@ -107,8 +110,8 @@
 			float _DepthMaxDistance;
 			float _FoamMaxDistance;
 			float _FoamMinDistance;
-			float _SurfaceNoiseCutoff;
 
+			float _SurfaceNoiseCutoff;
 			float2 _SurfaceNoiseScroll;
 
 			sampler2D _CameraDepthTexture;
@@ -131,7 +134,7 @@
                 float3 normalDot = saturate(dot(existingNormal, i.viewNormal));
 				float foamDistance = lerp(_FoamMaxDistance, _FoamMinDistance, normalDot);
 				float foamDepthDifference01 = saturate(depthDifference / foamDistance);
-				float surfaceNoiseCutoff = foamDepthDifference01; // * _SurfaceNoiseCutoff;
+				float surfaceNoiseCutoff = foamDepthDifference01 * _SurfaceNoiseCutoff;
                 
                 float2 noiseUV = float2((i.noiseUV.x + _Time.y * _SurfaceNoiseScroll.x), 
 				(i.noiseUV.y + _Time.y * _SurfaceNoiseScroll.y));
@@ -141,7 +144,8 @@
 				surfaceNoiseColor.a *= surfaceNoise;
 
                 // Use normal alpha blending to combine the foam with the surface.
-                float4 blendedColor = (col * (1 - surfaceNoiseCutoff)) + alphaBlend(surfaceNoiseColor, waterColor);
+                col.a *= _SurfaceOpacity;
+                float4 blendedColor = col + alphaBlend(surfaceNoiseColor, waterColor);
                 UNITY_APPLY_FOG(i.fogCoord, blendedColor);
 				return blendedColor;
         }
