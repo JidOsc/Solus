@@ -9,7 +9,7 @@ public class PlayerInteract : MonoBehaviour
     public int oreAmount = 0;
     public int stoneAmount = 0;
 
-    public GameObject input_text;
+    public OverlayMngr overlay;
 
     public List<GameObject> interactableObjects = new List<GameObject>();
     List<GameObject> objectsToRemove = new List<GameObject>();
@@ -19,7 +19,7 @@ public class PlayerInteract : MonoBehaviour
     void Update()
     {
         pickedThisFrame = false;
-        input_text.GetComponent<TMP_Text>().text = "";
+        overlay.DisplayText("");
 
         foreach (GameObject obj in interactableObjects)
         {
@@ -35,8 +35,8 @@ public class PlayerInteract : MonoBehaviour
 
             else if (obj.tag == "Station")
             {
-                StationScript station = obj.GetComponent<StationScript>();    
-                input_text.GetComponent<TMP_Text>().text = "Press TAB to repair station\nRequired Amount: " + station.CurrentCost().ToString();
+                StationScript station = obj.GetComponent<StationScript>();
+                overlay.DisplayText("Press TAB to repair station\nRequired Amount: " + station.CurrentCost().ToString());
 
                 if (Input.GetKeyDown(KeyCode.Tab))
                 {
@@ -63,7 +63,7 @@ public class PlayerInteract : MonoBehaviour
 
             else if (obj.tag == "DroppedOre" || obj.tag == "DroppedStone")
             {
-                input_text.GetComponent<TMP_Text>().text = "Press Left Mouse Button to pick up ore";
+                overlay.DisplayText("Press Left Mouse Button to pick up ore");
 
                 //if player picks up ore
                 if (!pickedThisFrame && Input.GetMouseButtonDown(0))

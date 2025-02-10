@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 
 public class OverlayMngr : MonoBehaviour
@@ -10,6 +11,11 @@ public class OverlayMngr : MonoBehaviour
 
     public GameObject health;
     public GameObject damagedImage;
+    public GameObject displayText;
+
+    public GameObject INTERFACE;
+    public GameObject FAINTED;
+
     private int current_health = 0;
 
 
@@ -43,6 +49,28 @@ public class OverlayMngr : MonoBehaviour
         staminaData.SetStamina((int)playerMovement.stamina);
 
         OreText.GetComponent<TMP_Text>().text = playerInventory.oreAmount.ToString();
+    }
+
+    public void DisplayText(string text)
+    {
+        displayText.GetComponent<TMP_Text>().text = text;
+    }
+
+    public void ShowFaintedScreen()
+    {
+        FAINTED.SetActive(true);
+        INTERFACE.SetActive(false);
+    }
+
+    public void Respawn()
+    {
+        FAINTED.SetActive(false);
+        INTERFACE.SetActive(true);
+    }
+
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     private IEnumerator ShowDamage(float hideDelay)

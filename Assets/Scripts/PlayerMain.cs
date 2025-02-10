@@ -21,8 +21,8 @@ public class PlayerMain : MonoBehaviour
     public float staminaDrainRate = 20f;
     public float staminaRegenRate = 15f;
 
+    public OverlayMngr overlay;
     public Enemy enemy;
-
     public Slider staminaBar;
 
     private CharacterController controller;
@@ -106,10 +106,15 @@ public class PlayerMain : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            transform.position = new Vector3(0, 0, 0);
-            GetComponent<PlayerInteract>().oreAmount = 0;
-            health = maxHealth;
+            overlay.ShowFaintedScreen();
         }
+    }
+
+    public void Reset()
+    {
+        transform.position = new Vector3(0, 0, 0);
+        GetComponent<PlayerInteract>().oreAmount = 0;
+        health = maxHealth;
     }
 
     public void OnTriggerEnter(Collider other)
