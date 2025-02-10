@@ -5,9 +5,7 @@ using UnityEngine;
 public class RotationObject : MonoBehaviour
 {
 
-    private Vector3 player_pos = new Vector3(0, 0, 0);
-
-    public float area;
+    public Vector3 player_pos = new Vector3(0, 0, 0);
 
     public GameObject lighty;
 
@@ -18,8 +16,6 @@ public class RotationObject : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         lighty = GameObject.FindGameObjectWithTag("Lighty");
-
-        //area = 3.14 *= 200 / 4;
     }
 
     public void Update()
@@ -46,9 +42,23 @@ public class RotationObject : MonoBehaviour
 
                 lighty.transform.LookAt(player_pos);
             }
+
             else if (Vector3.Distance(player_pos, lighty.transform.position) < 20)
             {
                 lighty.SetActive(false);
+            }
+
+            if (obj.tag == "Ore" || obj.tag == "Enemies" || obj.tag == "Stone")
+            {
+                if (Vector3.Distance(player.transform.position, obj.transform.position) > 150)
+                {
+                    obj.SetActive(false);
+                }
+
+                else
+                {
+                    obj.SetActive(true);
+                }
             }
         }
     }

@@ -51,6 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7356f1b7f8497824cbfcf19c57976e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  area: 0
+  lighty: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &6958170837034277603
 MonoBehaviour:
