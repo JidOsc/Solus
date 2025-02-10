@@ -12,6 +12,7 @@ TagManager:
   - Stone
   - Water
   - Lighty
+  - DroppedStone
   layers:
   - Default
   - TransparentFX
