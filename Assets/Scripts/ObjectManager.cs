@@ -5,7 +5,7 @@ using UnityEngine;
 public class RotationObject : MonoBehaviour
 {
 
-    private Vector3 player_pos = new Vector3(0, 0, 0);
+    public Vector3 player_pos = new Vector3(0, 0, 0);
 
     public GameObject lighty;
 
