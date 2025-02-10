@@ -7,10 +7,11 @@ public class PlayerInteract : MonoBehaviour
     public int damage = 5;
 
     public int oreAmount = 0;
+    public int stoneAmount = 0;
 
     public GameObject input_text;
 
-    List<GameObject> interactableObjects = new List<GameObject>();
+    public List<GameObject> interactableObjects = new List<GameObject>();
     List<GameObject> objectsToRemove = new List<GameObject>();
 
     bool pickedThisFrame = false;
@@ -46,7 +47,7 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
 
-            else if (obj.tag == "Ore")
+            else if (obj.tag == "Ore" || obj.tag == "Stone")
             {
                 //if player is mining
                 if (Input.GetMouseButtonDown(1))
@@ -60,7 +61,7 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
 
-            else if (obj.tag == "DroppedOre")
+            else if (obj.tag == "DroppedOre" || obj.tag == "DroppedStone")
             {
                 input_text.GetComponent<TMP_Text>().text = "Press Left Mouse Button to pick up ore";
 
@@ -70,8 +71,16 @@ public class PlayerInteract : MonoBehaviour
                     DroppedOreScript ore = obj.GetComponent<DroppedOreScript>();
 
                     pickedThisFrame = true;
-                    oreAmount += ore.quantity;
-                    objectsToRemove.Add(obj.gameObject);
+                    if (obj.tag == "DroppedOre")
+                    {
+                        oreAmount += ore.quantityOre;
+                        objectsToRemove.Add(obj.gameObject);
+                    }
+                    else if (obj.tag == "DroppedStone")
+                    {
+                        stoneAmount += ore.quatityStone;
+                        objectsToRemove.Add(obj.gameObject);
+                    }
                 }
             }
         }
