@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI; // Import UI library
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerMain : MonoBehaviour
@@ -9,16 +9,10 @@ public class PlayerMain : MonoBehaviour
     public float jumpForce = 7f;
     public float gravity = 10f;
     public float health;
-    public float maxHealth = 10f; 
+    public float maxHealth = 10f;
     public float ore = 0;
 
-    public float backflipDuration = 1f;  // Duration of the backflip effect
-    private float currentBackflipTime = 1f;
-    private bool isBackflipping = false;
-    private AudioSource audioSource;
-    private bool isMoving = false;
-
-    public Camera playerCamera; // Assign your main camera in the inspector
+    public Camera playerCamera;
     public float normalFOV = 60f;
     public float sprintFOV = 75f;
     public float fovSpeed = 5f;
@@ -32,25 +26,21 @@ public class PlayerMain : MonoBehaviour
     public int damage = 20;
     public float attackRange = 4f;
 
-    public Slider staminaBar; // Reference to the UI Stamina Bar
+    public Slider staminaBar;
 
     private CharacterController controller;
     private Vector3 velocity;
     private bool isGrounded;
     private bool onWater = false;
-
-    // Cooldown timer for backflip
-    private float backflipCooldown = 1f; // 1 second cooldown
-    private float backflipCooldownTimer = 0f; // Timer for tracking the cooldown
-    [SerializeField] GameObject water;
+    private bool isMoving = false;
+    private AudioSource audioSource;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
         stamina = maxStamina;
-        health = maxHealth; 
+        health = maxHealth;
 
-        // Find the stamina bar UI if not assigned
         if (staminaBar == null)
         {
             staminaBar = GameObject.Find("StaminaBar").GetComponent<Slider>();
@@ -65,7 +55,6 @@ public class PlayerMain : MonoBehaviour
     void Update()
     {
         isGrounded = controller.isGrounded;
-
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
@@ -83,7 +72,7 @@ public class PlayerMain : MonoBehaviour
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
         controller.Move(move * currentSpeed * Time.deltaTime);
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (isSprinting)
         {
             stamina -= staminaDrainRate * Time.deltaTime;
         }
@@ -93,67 +82,48 @@ public class PlayerMain : MonoBehaviour
         }
 
         stamina = Mathf.Clamp(stamina, 0, maxStamina);
-
-        // Update the stamina bar UI
-        if (staminaBar != null)
-        {
-            staminaBar.value = stamina;
-        }
+        staminaBar.value = stamina;
 
         if (Input.GetButton("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpForce * 2f * gravity);
-
         }
 
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        //gameObject.transform.GetChild(1).GetComponent<Transform>().position = gameObject.transform.position;
-
-        if (Input.GetKeyDown(KeyCode.F)) // Press Space to attack
+        if (Input.GetKeyDown(KeyCode.F))
         {
             Attack();
         }
 
-        // Handle backflip input
-        if (Input.GetKeyDown(KeyCode.B) && backflipCooldownTimer <= 0f) // If the player presses B and cooldown is over
-        {
-            StartBackflip();
-        }
+        isMoving = moveX != 0 || moveZ != 0;
 
-        if (isBackflipping)
-        {
-            PerformBackflip();
-        }
-
-        // Handle backflip cooldown timer
-        if (backflipCooldownTimer > 0f)
-        {
-            backflipCooldownTimer -= Time.deltaTime; // Countdown the cooldown timer
-        }
-
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) 
-        {
-    
-
-            isMoving = true;
-        }
-        else
-        {
-            isMoving = false;
-        }
-        if (isMoving && !audioSource.isPlaying && onWater == false)
+        if (isMoving && !audioSource.isPlaying && !onWater)
         {
             audioSource.Play();
         }
-        if (!isMoving)
+        else if (!isMoving || onWater)
         {
             audioSource.Stop();
-            
         }
     }
 
+    void Attack()
+    {
+        Collider[] hitEnemies = Physics.OverlapSphere(transform.position, attackRange);
+        foreach (Collider enemyCollider in hitEnemies)
+        {
+            if (enemyCollider.CompareTag("Enemies"))
+            {
+                Enemy enemy = enemyCollider.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(damage);
+                }
+            }
+        }
+    }
     public void AddOre(float quantity)
     {
         ore += quantity;
@@ -162,97 +132,44 @@ public class PlayerMain : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-
         if (health <= 0)
         {
-            // Sätt positionen till (0, 0, 0)
             transform.position = new Vector3(0, 0, 0);
-
-            // Sätt ore till 0
             ore = 0;
-            health = maxHealth; 
-            
+            health = maxHealth;
         }
     }
-
-    public void DealDamage(Enemy enemy)
-    {
-        if (enemy != null)
-        {
-            enemy.TakeDamage(damage); // Call the enemy's TakeDamage method
-        }
-    }
-
-    void Attack()
-    {
-        Collider[] hitEnemies = Physics.OverlapSphere(transform.position, attackRange);
-
-        foreach (Collider enemyCollider in hitEnemies)
-        {
-            if (enemyCollider.CompareTag("Enemies"))
-            {
-                Enemy enemy = enemyCollider.GetComponent<Enemy>();
-                if (enemy != null)
-                {
-                    DealDamage(enemy); // Deal damage to the enemy in range
-
-                }
-            }
-        }
-    }
-
-    void StartBackflip()
-    {
-        isBackflipping = true;
-        currentBackflipTime = 0f; // Reset timer
-
-        // Start the cooldown timer
-        backflipCooldownTimer = backflipCooldown;
-    }
-
-    void PerformBackflip()
-    {
-        // Update the backflip time
-        currentBackflipTime += Time.deltaTime;
-
-        // Calculate the backflip angle (this goes from 0 to 360 degrees)
-        float backflipAngle = Mathf.Lerp(0f, -360f, currentBackflipTime / backflipDuration);
-
-        // Apply the rotation to the camera (rotate around the x-axis)
-        playerCamera.transform.localRotation = Quaternion.Euler(backflipAngle, 0f, 0f);
-
-        // Stop the backflip once the duration is over
-        if (currentBackflipTime >= backflipDuration)
-        {
-            isBackflipping = false;
-        }
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.name == "sandhappy")
-        {
-            onWater = false;
-            audioSource.Play();
-        }
-    }
-
-    
 
     public void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Entered: " + other.gameObject.name);
+
         if (other.gameObject.name == "triggerhappy")
         {
             onWater = true;
             audioSource.Stop();
         }
-
-        if (other.gameObject.name == "sandhappy")
+        else if (other.gameObject.name == "sandhappy")
         {
             onWater = false;
-            audioSource.Play();
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
         }
+    }
 
+    public void OnTriggerExit(Collider other)
+    {
+        Debug.Log("Exited: " + other.gameObject.name);
+
+        if (other.gameObject.name == "triggerhappy")
+        {
+            onWater = false;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
     }
 }
-
