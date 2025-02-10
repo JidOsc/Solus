@@ -42,14 +42,14 @@ public class Objectspawner : MonoBehaviour
             spawning.transform.parent = level.transform;
         }
 
-        for (int i = 0; i < 200; i++)
+        for (int i = 0; i < 100; i++)
         {
-            int x = Random.Range(-1000, 1000);
-            int z = Random.Range(-1000, 1000);
+            int x = Random.Range(-800, 800);
+            int z = Random.Range(-800, 800);
             
             Vector3 pos = new Vector3(x, 0, z);
             
-            pos.y = Terrain.activeTerrain.SampleHeight(pos) + Terrain.activeTerrain.GetPosition().y + 0.25f;
+            pos.y = Terrain.activeTerrain.SampleHeight(pos) + Terrain.activeTerrain.GetPosition().y + 2f;
 
 
             var spawning = Instantiate(enemy, pos, transform.rotation);
