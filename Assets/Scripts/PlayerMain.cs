@@ -10,7 +10,6 @@ public class PlayerMain : MonoBehaviour
     public float gravity = 10f;
     public float health;
     public float maxHealth = 10f;
-    public float ore = 0;
 
     public Camera playerCamera;
     public float normalFOV = 60f;
@@ -23,8 +22,6 @@ public class PlayerMain : MonoBehaviour
     public float staminaRegenRate = 15f;
 
     public Enemy enemy;
-    public int damage = 20;
-    public float attackRange = 4f;
 
     public Slider staminaBar;
 
@@ -92,11 +89,6 @@ public class PlayerMain : MonoBehaviour
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Attack();
-        }
-
         isMoving = moveX != 0 || moveZ != 0;
 
         if (isMoving && !audioSource.isPlaying && !onWater)
@@ -109,33 +101,13 @@ public class PlayerMain : MonoBehaviour
         }
     }
 
-    void Attack()
-    {
-        Collider[] hitEnemies = Physics.OverlapSphere(transform.position, attackRange);
-        foreach (Collider enemyCollider in hitEnemies)
-        {
-            if (enemyCollider.CompareTag("Enemies"))
-            {
-                Enemy enemy = enemyCollider.GetComponent<Enemy>();
-                if (enemy != null)
-                {
-                    enemy.TakeDamage(damage);
-                }
-            }
-        }
-    }
-    public void AddOre(float quantity)
-    {
-        ore += quantity;
-    }
-
     public void TakeDamage(int damage)
     {
         health -= damage;
         if (health <= 0)
         {
             transform.position = new Vector3(0, 0, 0);
-            ore = 0;
+            GetComponent<PlayerInteract>().oreAmount = 0;
             health = maxHealth;
         }
     }

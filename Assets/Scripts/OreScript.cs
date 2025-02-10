@@ -5,10 +5,10 @@ public class OreScript : MonoBehaviour
     public GameObject droppedOrePrefab;
 
     short timesToMine = 5;
-    float orePerMine = 1;
+    int orePerMine = 1;
 
 
-    void DropOre(float quantity)
+    void DropOre(int quantity)
     {   
         Vector2 pos = Random.insideUnitCircle;
         DroppedOreScript new_ore = Instantiate(droppedOrePrefab, transform.position + new Vector3(pos.x, 0, pos.y) * 2, Quaternion.identity, transform.parent).GetComponent<DroppedOreScript>();

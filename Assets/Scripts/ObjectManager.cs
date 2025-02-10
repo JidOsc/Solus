@@ -50,7 +50,7 @@ public class RotationObject : MonoBehaviour
 
             if (obj.tag == "Ore" || obj.tag == "Enemies" || obj.tag == "Stone")
             {
-                if (Vector3.Distance(player.transform.position, obj.transform.position) > 150)
+                if (Vector2.Distance(new Vector2(player.transform.position.x, player.transform.position.z), new Vector2(obj.transform.position.x, obj.transform.position.z)) > 150)
                 {
                     obj.SetActive(false);
                 }

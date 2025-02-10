@@ -6,6 +6,8 @@ public class PlayerInteract : MonoBehaviour
 {
     public int damage = 5;
 
+    public int oreAmount = 0;
+
     public GameObject input_text;
 
     List<GameObject> interactableObjects = new List<GameObject>();
@@ -37,9 +39,7 @@ public class PlayerInteract : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.Tab))
                 {
-                    PlayerMain player = GetComponent<PlayerMain>();
-
-                    if(player.ore >= station.CurrentCost())
+                    if(oreAmount >= station.CurrentCost())
                     {
                         station.Repair();
                     }
@@ -70,7 +70,7 @@ public class PlayerInteract : MonoBehaviour
                     DroppedOreScript ore = obj.GetComponent<DroppedOreScript>();
 
                     pickedThisFrame = true;
-                    gameObject.GetComponent<PlayerMain>().AddOre(ore.quantity);
+                    oreAmount += ore.quantity;
                     objectsToRemove.Add(obj.gameObject);
                 }
             }

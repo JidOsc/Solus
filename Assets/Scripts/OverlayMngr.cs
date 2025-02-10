@@ -25,23 +25,24 @@ public class OverlayMngr : MonoBehaviour
 
     private void Update()
     {
-        PlayerMain playerData = player.GetComponent<PlayerMain>();
+        PlayerMain playerMovement = player.GetComponent<PlayerMain>();
+        PlayerInteract playerInventory = player.GetComponent<PlayerInteract>();
 
         HealthBar healthData = health.GetComponent<HealthBar>();
 
         IEnumerator coroutine = ShowDamage(0.5f);
-        if (playerData.health < current_health)
+        if (playerMovement.health < current_health)
         {
             StartCoroutine(coroutine);
         }
 
-        healthData.SetHealth((int)playerData.health);
-        current_health = (int)playerData.health;
+        healthData.SetHealth((int)playerMovement.health);
+        current_health = (int)playerMovement.health;
 
         StaminaBar staminaData = stamina.GetComponent<StaminaBar>();
-        staminaData.SetStamina((int)playerData.stamina);
+        staminaData.SetStamina((int)playerMovement.stamina);
 
-        OreText.GetComponent<TMP_Text>().text = playerData.ore.ToString();
+        OreText.GetComponent<TMP_Text>().text = playerInventory.oreAmount.ToString();
     }
 
     private IEnumerator ShowDamage(float hideDelay)
