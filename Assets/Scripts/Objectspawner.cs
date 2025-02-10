@@ -12,11 +12,11 @@ public class Objectspawner : MonoBehaviour
 
     void Start()
     {              
-        for (int i = 0; i < 6000; i++)
+        for (int i = 0; i < 4000; i++)
         {
             int stone_num = Random.Range(0, 4);
-            int x = Random.Range(-900, 900);
-            int z = Random.Range(-900, 900);
+            int x = Random.Range(-500, 500);
+            int z = Random.Range(-500, 500);
             float rotY = Random.Range(-100, 50);
             
             Vector3 pos = new Vector3(x, 0, z);
@@ -44,8 +44,8 @@ public class Objectspawner : MonoBehaviour
 
         for (int i = 0; i < 100; i++)
         {
-            int x = Random.Range(-800, 800);
-            int z = Random.Range(-800, 800);
+            int x = Random.Range(-500, 500);
+            int z = Random.Range(-500, 500);
             
             Vector3 pos = new Vector3(x, 0, z);
             
