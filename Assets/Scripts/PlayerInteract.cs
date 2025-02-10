@@ -91,7 +91,7 @@ public class PlayerInteract : MonoBehaviour
     {
         if (other.isTrigger)
         {
-            interactableObjects.Add(other.gameObject);
+            interactableObjects.Add(other.transform.parent.gameObject);
         }
     }
 
@@ -99,7 +99,7 @@ public class PlayerInteract : MonoBehaviour
     {
         if (other.isTrigger)
         {
-            interactableObjects.Remove(other.gameObject);
+            interactableObjects.Remove(other.transform.parent.gameObject);
         }
     }
 }

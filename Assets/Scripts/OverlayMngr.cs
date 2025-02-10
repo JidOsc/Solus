@@ -1,5 +1,6 @@
 using UnityEngine;
-using TMPro; 
+using TMPro;
+using System.Collections;
 
 
 public class OverlayMngr : MonoBehaviour
@@ -22,21 +23,18 @@ public class OverlayMngr : MonoBehaviour
 
     }
 
-    void Update()
+    private void Update()
     {
         PlayerMain playerData = player.GetComponent<PlayerMain>();
 
-
-
         HealthBar healthData = health.GetComponent<HealthBar>();
-        if(playerData.health < current_health)
+
+        IEnumerator coroutine = ShowDamage(0.5f);
+        if (playerData.health < current_health)
         {
-            damagedImage.SetActive(true);
+            StartCoroutine(coroutine);
         }
-        else
-        {
-            damagedImage.SetActive(false);
-        }
+
         healthData.SetHealth((int)playerData.health);
         current_health = (int)playerData.health;
 
@@ -44,9 +42,12 @@ public class OverlayMngr : MonoBehaviour
         staminaData.SetStamina((int)playerData.stamina);
 
         OreText.GetComponent<TMP_Text>().text = playerData.ore.ToString();
+    }
 
-
-
-        
+    private IEnumerator ShowDamage(float hideDelay)
+    {
+        damagedImage.SetActive(true);
+        yield return new WaitForSeconds(hideDelay);
+        damagedImage.SetActive(false);
     }
 }
