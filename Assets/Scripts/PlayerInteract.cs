@@ -1,24 +1,42 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 public class PlayerInteract : MonoBehaviour
 {
-    public List<GameObject> interactableObjects = new List<GameObject>();
-    public List<GameObject> objectsToRemove = new List<GameObject>();
+    public int damage = 5;
+
+    public GameObject input_text;
+
+    List<GameObject> interactableObjects = new List<GameObject>();
+    List<GameObject> objectsToRemove = new List<GameObject>();
 
     bool pickedThisFrame = false;
 
     void Update()
     {
         pickedThisFrame = false;
+        input_text.GetComponent<TMP_Text>().text = "";
 
         foreach (GameObject obj in interactableObjects)
         {
-            if (obj.tag == "Station")
+            if (obj.tag == "Enemies")
             {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Enemy enemy = obj.GetComponent<Enemy>();
+
+                    enemy.TakeDamage(damage);
+                }
+            }
+
+            else if (obj.tag == "Station")
+            {
+                StationScript station = obj.GetComponent<StationScript>();    
+                input_text.GetComponent<TMP_Text>().text = "Press TAB to repair station\nRequired Amount: " + station.CurrentCost().ToString();
+
                 if (Input.GetKeyDown(KeyCode.Tab))
                 {
-                    StationScript station = obj.GetComponent<StationScript>();
                     PlayerMain player = GetComponent<PlayerMain>();
 
                     if(player.ore >= station.CurrentCost())
@@ -44,6 +62,8 @@ public class PlayerInteract : MonoBehaviour
 
             else if (obj.tag == "DroppedOre")
             {
+                input_text.GetComponent<TMP_Text>().text = "Press Left Mouse Button to pick up ore";
+
                 //if player picks up ore
                 if (!pickedThisFrame && Input.GetMouseButtonDown(0))
                 {
@@ -58,12 +78,10 @@ public class PlayerInteract : MonoBehaviour
 
         for(int i = 0; i < objectsToRemove.Count; i++)
         {
-            
             while (interactableObjects.Contains(objectsToRemove[i]))
             {
                 interactableObjects.Remove(objectsToRemove[i]);
             }
-
             Destroy(objectsToRemove[i]);
         }
         objectsToRemove.Clear();

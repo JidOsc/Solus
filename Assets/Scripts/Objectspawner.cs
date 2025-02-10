@@ -17,7 +17,7 @@ public class Objectspawner : MonoBehaviour
             int stone_num = Random.Range(0, 4);
             int x = Random.Range(-900, 900);
             int z = Random.Range(-900, 900);
-            float rotY = Random.Range(0, 360);
+            float rotY = Random.Range(-100, 50);
             //float rotZ = Random.Range(0, 360);
             Vector3 pos = new Vector3(x, 0, z);
             //int hight = (int)Terrain.activeTerrain.terrainData.GetHeight(x, z) + 8;

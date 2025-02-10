@@ -32,16 +32,6 @@ public class VerticalBox : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void SettingsButtonPressed()
-    {
-        
-    }
-
-    public void CreditsButtonPressed()
-    {
-
-    }
-
     public void ExitButtonPressed()
     {
         Application.Quit();
@@ -55,8 +45,6 @@ public class VerticalBox : MonoBehaviour
     public void ChangedSensitivity(string value)
     {
         int new_value = int.Parse(sensitivity_field.GetComponent<TMP_InputField>().text);
-        //
-
         PlayerPrefs.SetFloat("SENSITIVITY", new_value);
         PlayerPrefs.Save();
     }
