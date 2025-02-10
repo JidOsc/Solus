@@ -230,9 +230,10 @@ public class PlayerMain : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Water")
+        if (collision.gameObject.name == "sandhappy")
         {
-            audioSource.Stop();
+            onWater = false;
+            audioSource.Play();
         }
     }
 
@@ -245,6 +246,7 @@ public class PlayerMain : MonoBehaviour
             onWater = true;
             audioSource.Stop();
         }
+
         if (other.gameObject.name == "sandhappy")
         {
             onWater = false;
@@ -252,9 +254,5 @@ public class PlayerMain : MonoBehaviour
         }
 
     }
-
-    
-
-    
 }
 
