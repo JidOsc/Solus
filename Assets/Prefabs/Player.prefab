@@ -355,8 +355,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d38e25923a06744b270ecf3b59a67d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableObjects: []
-  objectsToRemove: []
+  damage: 5
+  input_text: {fileID: 0}
 --- !u!114 &7624358632751155401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,11 +376,10 @@ MonoBehaviour:
   health: 10
   maxHealth: 10
   ore: 0
-  backflipDuration: 0.55
   playerCamera: {fileID: 5445300961687953437}
   normalFOV: 60
   sprintFOV: 90
-  fovSpeed: 5
+  fovSpeed: 1
   maxStamina: 100
   stamina: 0
   staminaDrainRate: 20
@@ -389,7 +388,6 @@ MonoBehaviour:
   damage: 20
   attackRange: 4
   staminaBar: {fileID: 0}
-  water: {fileID: 0}
 --- !u!143 &8739459620347010922
 CharacterController:
   m_ObjectHideFlags: 0
