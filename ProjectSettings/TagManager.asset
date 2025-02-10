@@ -11,6 +11,7 @@ TagManager:
   - RadioTower
   - Stone
   - Water
+  - Lighty
   layers:
   - Default
   - TransparentFX
