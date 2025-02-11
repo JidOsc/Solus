@@ -12,6 +12,7 @@ public class OverlayMngr : MonoBehaviour
     public GameObject health;
     public GameObject damagedImage;
     public GameObject displayText;
+    public GameObject fpImage;
 
     public GameObject INTERFACE;
     public GameObject FAINTED;
@@ -50,7 +51,11 @@ public class OverlayMngr : MonoBehaviour
 
         OreText.GetComponent<TMP_Text>().text = playerInventory.oreAmount.ToString();
         StoneText.GetComponent<TMP_Text>().text = playerInventory.stoneAmount.ToString();
-        
+    }
+
+    public void Attack()
+    {
+        fpImage.GetComponent<Animator>().Play("attack");
     }
 
     public void DisplayText(string text)

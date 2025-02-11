@@ -24,15 +24,25 @@ public class PlayerInteract : MonoBehaviour
 
         foreach (GameObject obj in interactableObjects)
         {
-            if (obj.tag == "Enemies")
+            if (Input.GetMouseButtonDown(0)) //hugger
             {
-                if (Input.GetMouseButtonDown(0))
+                overlay.Attack();
+
+                if (obj.tag == "Enemies")
                 {
                     Enemy enemy = obj.GetComponent<Enemy>();
-
                     if (enemy.TakeDamage(damage)) //true om fienden dog
                     {
                         objectsToRemove.Add(obj);
+                    }
+                }
+
+                else if (obj.tag == "Ore" || obj.tag == "Stone" || obj.tag == "Tree")
+                {
+                    OreScript ore = obj.GetComponent<OreScript>();
+                    if (ore.Mine()) //true om ore dog
+                    {
+                        objectsToRemove.Add(obj.gameObject);
                     }
                 }
             }
@@ -48,20 +58,6 @@ public class PlayerInteract : MonoBehaviour
                     {
                         station.Repair();
                     }
-                }
-            }
-
-            else if (obj.tag == "Ore" || obj.tag == "Stone" || obj.tag == "Tree")
-            {
-                //if player is mining
-                if (Input.GetMouseButtonDown(1))
-                {
-                    OreScript ore = obj.GetComponent<OreScript>();
-                    if (ore.Mine())
-                    {
-                        objectsToRemove.Add(obj.gameObject);
-                    }
-                    Debug.Log("Högg!");
                 }
             }
 
