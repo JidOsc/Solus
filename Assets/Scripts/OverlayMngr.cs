@@ -24,6 +24,7 @@ public class OverlayMngr : MonoBehaviour
     [SerializeField] private Sprite[] images;
     public GameObject OreText;
     public GameObject StoneText;
+    public GameObject TreeText;
 
     void Start()
     {
@@ -51,6 +52,7 @@ public class OverlayMngr : MonoBehaviour
 
         OreText.GetComponent<TMP_Text>().text = playerInventory.oreAmount.ToString();
         StoneText.GetComponent<TMP_Text>().text = playerInventory.stoneAmount.ToString();
+        TreeText.GetComponent<TMP_Text>().text = playerInventory.WoodAmount.ToString();
     }
 
     public void Attack()
