@@ -8,6 +8,7 @@ public class PlayerInteract : MonoBehaviour
 
     public int oreAmount = 0;
     public int stoneAmount = 0;
+    public int WoodAmount = 0;
 
     public OverlayMngr overlay;
 
@@ -50,7 +51,7 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
 
-            else if (obj.tag == "Ore" || obj.tag == "Stone")
+            else if (obj.tag == "Ore" || obj.tag == "Stone" || obj.tag == "Tree")
             {
                 //if player is mining
                 if (Input.GetMouseButtonDown(1))
@@ -64,7 +65,7 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
 
-            else if (obj.tag == "DroppedOre" || obj.tag == "DroppedStone")
+            else if (obj.tag == "DroppedOre" || obj.tag == "DroppedStone" || obj.tag == "TreeDrop")
             {
                 overlay.DisplayText("Press Left Mouse Button to pick up ore");
 
@@ -82,6 +83,11 @@ public class PlayerInteract : MonoBehaviour
                     else if (obj.tag == "DroppedStone")
                     {
                         stoneAmount += ore.quantity;
+                        objectsToRemove.Add(obj.gameObject);
+                    }
+                    else if (obj.tag == "TreeDrop")
+                    {
+                        WoodAmount += ore.quantity;
                         objectsToRemove.Add(obj.gameObject);
                     }
                 }

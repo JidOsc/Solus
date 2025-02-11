@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1932450116270935485}
   - component: {fileID: 8970532338450004598}
   - component: {fileID: 7505862494957889539}
+  - component: {fileID: 6273708604447250465}
   m_Layer: 0
   m_Name: GhostWood
   m_TagString: Tree
@@ -110,6 +111,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.6235139, y: 1.6952853, z: 0.2}
   m_Center: {x: -0.12273267, y: -0.65235734, z: 0}
+--- !u!114 &6273708604447250465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6700183151132978107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e19f2d75213f294dbd27fd7fa2079b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppedOrePrefab: {fileID: 7882831015496459294, guid: d37df255e5a1b07499ee718b4297e853, type: 3}
 --- !u!1 &7281048708429512842
 GameObject:
   m_ObjectHideFlags: 0
