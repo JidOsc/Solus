@@ -29,7 +29,10 @@ public class PlayerInteract : MonoBehaviour
                 {
                     Enemy enemy = obj.GetComponent<Enemy>();
 
-                    enemy.TakeDamage(damage);
+                    if (enemy.TakeDamage(damage)) //true om fienden dog
+                    {
+                        objectsToRemove.Add(obj);
+                    }
                 }
             }
 

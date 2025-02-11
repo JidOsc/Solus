@@ -106,12 +106,16 @@ public class PlayerMain : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             overlay.ShowFaintedScreen();
         }
     }
 
     public void Reset()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         transform.position = new Vector3(0, 0, 0);
         GetComponent<PlayerInteract>().oreAmount = 0;
         health = maxHealth;

@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public float speed = 2f;
     public int Maxhealth = 100;
     public int currentHealth;
-    public int damage = 2;
+    public int damage = 10;
     public float obstacleRange = 5f;
     private bool _alive;
     private bool isDealingDamage;
@@ -43,13 +43,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int amount)
+    public bool TakeDamage(int amount)
     {
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
-            Die();
+            return true;
         }
+        return false;
     }
 
     public void Die()

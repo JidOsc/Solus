@@ -58,6 +58,7 @@ public class OverlayMngr : MonoBehaviour
 
     public void ShowFaintedScreen()
     {
+        Debug.Log("dod");
         FAINTED.SetActive(true);
         INTERFACE.SetActive(false);
     }
@@ -66,6 +67,7 @@ public class OverlayMngr : MonoBehaviour
     {
         FAINTED.SetActive(false);
         INTERFACE.SetActive(true);
+        player.GetComponent<PlayerMain>().Reset();
     }
 
     public void ToMainMenu()
