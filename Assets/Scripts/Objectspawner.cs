@@ -10,9 +10,11 @@ public class Objectspawner : MonoBehaviour
     public List<GameObject> stones = new List<GameObject>();
     public List<GameObject> ores = new List<GameObject>();
 
+    public GameObject TreePrefab;
+
     void Start()
     {              
-        for (int i = 0; i < 4000; i++)
+        for (int i = 0; i < 3500; i++)
         {
             int stone_num = Random.Range(0, 4);
             int x = Random.Range(-500, 500);
@@ -53,6 +55,20 @@ public class Objectspawner : MonoBehaviour
 
 
             var spawning = Instantiate(enemy, pos, transform.rotation);
+            spawning.transform.parent = level.transform;
+        }
+
+        for (int i = 0; i < 300; i++)
+        {
+            int x = Random.Range(-500, 500);
+            int z = Random.Range(-500, 500);
+
+            Vector3 pos = new Vector3(x, 0, z);
+
+            pos.y = Terrain.activeTerrain.SampleHeight(pos) + Terrain.activeTerrain.GetPosition().y + 1.5f;
+
+
+            var spawning = Instantiate(TreePrefab, pos, transform.rotation);
             spawning.transform.parent = level.transform;
         }
     }

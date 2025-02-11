@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7356f1b7f8497824cbfcf19c57976e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  area: 0
+  player_pos: {x: 0, y: 0, z: 0}
   lighty: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &6958170837034277603
@@ -75,6 +75,7 @@ MonoBehaviour:
   - {fileID: 1317047053211836411, guid: ebf0bc2dc7ed61b4f95307bc49472fa0, type: 3}
   ores:
   - {fileID: 8326932588880210358, guid: eeab29b0d3ce9954c84f1e77adf49a13, type: 3}
+  TreePrefab: {fileID: 6700183151132978107, guid: 0861f3c1746220f4c97cd970184f017d, type: 3}
 --- !u!1 &6276446696371522973
 GameObject:
   m_ObjectHideFlags: 0

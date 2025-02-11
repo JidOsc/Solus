@@ -13,6 +13,7 @@ TagManager:
   - Water
   - Lighty
   - DroppedStone
+  - Tree
   layers:
   - Default
   - TransparentFX
