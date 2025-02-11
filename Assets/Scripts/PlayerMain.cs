@@ -119,8 +119,6 @@ public class PlayerMain : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Entered: " + other.gameObject.name);
-
         if (other.gameObject.name == "triggerhappy")
         {
             onWater = true;
@@ -138,8 +136,6 @@ public class PlayerMain : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        Debug.Log("Exited: " + other.gameObject.name);
-
         if (other.gameObject.name == "triggerhappy")
         {
             onWater = false;
