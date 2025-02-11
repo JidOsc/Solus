@@ -76,12 +76,12 @@ public class PlayerInteract : MonoBehaviour
                     pickedThisFrame = true;
                     if (obj.tag == "DroppedOre")
                     {
-                        oreAmount += ore.quantityOre;
+                        oreAmount += ore.quantity;
                         objectsToRemove.Add(obj.gameObject);
                     }
                     else if (obj.tag == "DroppedStone")
                     {
-                        stoneAmount += ore.quatityStone;
+                        stoneAmount += ore.quantity;
                         objectsToRemove.Add(obj.gameObject);
                     }
                 }

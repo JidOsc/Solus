@@ -21,8 +21,8 @@ public class OverlayMngr : MonoBehaviour
 
     public GameObject stamina;
     [SerializeField] private Sprite[] images;
-    public GameObject OreText; 
-
+    public GameObject OreText;
+    public GameObject StoneText;
 
     void Start()
     {
@@ -49,6 +49,8 @@ public class OverlayMngr : MonoBehaviour
         staminaData.SetStamina((int)playerMovement.stamina);
 
         OreText.GetComponent<TMP_Text>().text = playerInventory.oreAmount.ToString();
+        StoneText.GetComponent<TMP_Text>().text = playerInventory.stoneAmount.ToString();
+        
     }
 
     public void DisplayText(string text)
