@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 4982502253560919439}
   - component: {fileID: -621228382031638617}
   - component: {fileID: 8644941820675042455}
+  - component: {fileID: 6853278488201252947}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -357,7 +358,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  input_text: {fileID: 0}
+  oreAmount: 0
+  stoneAmount: 0
+  WoodAmount: 0
+  overlay: {fileID: 0}
+  interactableObjects: []
 --- !u!114 &7624358632751155401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,7 +381,6 @@ MonoBehaviour:
   gravity: 10
   health: 10
   maxHealth: 10
-  ore: 0
   playerCamera: {fileID: 5445300961687953437}
   normalFOV: 60
   sprintFOV: 90
@@ -385,9 +389,8 @@ MonoBehaviour:
   stamina: 0
   staminaDrainRate: 20
   staminaRegenRate: 15
+  overlay: {fileID: 0}
   enemy: {fileID: 0}
-  damage: 20
-  attackRange: 4
   staminaBar: {fileID: 0}
 --- !u!143 &8739459620347010922
 CharacterController:
@@ -616,3 +619,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6853278488201252947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7393176407337172850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 518557cf513f50e43a732217b31a910e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
