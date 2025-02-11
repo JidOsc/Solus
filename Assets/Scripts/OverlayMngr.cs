@@ -55,7 +55,7 @@ public class OverlayMngr : MonoBehaviour
 
     public void Attack()
     {
-        fpImage.GetComponent<Animator>().Play("attack");
+        fpImage.GetComponent<Animator>().SetTrigger("Attack");
     }
 
     public void DisplayText(string text)
