@@ -378,8 +378,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d88d4d7c1d439b4d9d03ace5ecd6461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sand: {fileID: 8300000, guid: f71a73e8f6232d1499903a00c60d9f8f, type: 3}
-  water: {fileID: 8300000, guid: 31f63b6b7b1de0c4099aa4d7ebe9d4ed, type: 3}
+  sand: {fileID: 8300000, guid: c445de5865943c740a4571861732ef68, type: 3}
+  vatten: {fileID: 8300000, guid: c69d22ca0cb32f74fb8eea64106adab1, type: 3}
   walkSpeed: 6
   sprintSpeed: 9
   jumpForce: 0.6
@@ -432,8 +432,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f71a73e8f6232d1499903a00c60d9f8f, type: 3}
-  m_Resource: {fileID: 8300000, guid: f71a73e8f6232d1499903a00c60d9f8f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c445de5865943c740a4571861732ef68, type: 3}
+  m_Resource: {fileID: 8300000, guid: c445de5865943c740a4571861732ef68, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -537,8 +537,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 31f63b6b7b1de0c4099aa4d7ebe9d4ed, type: 3}
-  m_Resource: {fileID: 8300000, guid: 31f63b6b7b1de0c4099aa4d7ebe9d4ed, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c69d22ca0cb32f74fb8eea64106adab1, type: 3}
+  m_Resource: {fileID: 8300000, guid: c69d22ca0cb32f74fb8eea64106adab1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
