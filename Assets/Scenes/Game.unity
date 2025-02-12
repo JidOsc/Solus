@@ -10543,6 +10543,10 @@ PrefabInstance:
       propertyPath: level
       value: 
       objectReference: {fileID: 145643953}
+    - target: {fileID: 34301740025879106, guid: 91da52ed617151242a6d336e029b4367, type: 3}
+      propertyPath: overlay
+      value: 
+      objectReference: {fileID: 4195958913249819875}
     - target: {fileID: 98255876897829561, guid: 91da52ed617151242a6d336e029b4367, type: 3}
       propertyPath: player
       value: 
@@ -10690,6 +10694,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 774197455598069018, guid: e783edd98df08414ead96886ada6153f, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 798840358926640861, guid: e783edd98df08414ead96886ada6153f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1561774578772742629, guid: e783edd98df08414ead96886ada6153f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1561774578772742629, guid: e783edd98df08414ead96886ada6153f, type: 3}
+      propertyPath: m_isRightToLeft
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1734616591553768398, guid: e783edd98df08414ead96886ada6153f, type: 3}
