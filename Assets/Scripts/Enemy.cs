@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
 
             if (distanceToPlayer <= 10 && !isDealingDamage)
             {
-                StartCoroutine(DealDamageOverTime(2, 5));
+                StartCoroutine(DealDamage(2, 5));
             }
         }
     }
@@ -80,23 +80,22 @@ public class Enemy : MonoBehaviour
     void FollowPlayer()
     {
         if (Vector3.Distance(transform.position, player.transform.position) > followDistance)
+        {
+            GetComponent<Animator>().SetBool("walking", false);
             return;
+        }
 
+        GetComponent<Animator>().SetBool("walking", true);
         Vector3 pos = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         GetComponent<Rigidbody>().MovePosition(pos);
     }
 
-    IEnumerator DealDamageOverTime(int damageAmount, float interval)
+    IEnumerator DealDamage(int damageAmount, float delay)
     {
         isDealingDamage = true;
-        yield return new WaitForSeconds(interval);
+        player.GetComponent<PlayerMain>().TakeDamage(damageAmount);
 
-        while (_alive && player != null && Vector3.Distance(transform.position, player.transform.position) <= 10)
-        {
-            player.GetComponent<PlayerMain>().TakeDamage(damageAmount);
-            yield return new WaitForSeconds(interval);
-        }
-
+        yield return new WaitForSeconds(delay);
         isDealingDamage = false;
     }
 }
