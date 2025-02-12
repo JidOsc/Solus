@@ -1,16 +1,27 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    public PlayerLook playerLook;
+
+    public void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void build()
     {
-        
+        Vector3 mouse = Input.mousePosition;
+
+        Ray casepoint = Camera.main.ScreenPointToRay(mouse);
+        RaycastHit hit;
+
+        if(Physics.Raycast(casepoint, out hit, 10))
+        {
+            
+        }
     }
+
 }

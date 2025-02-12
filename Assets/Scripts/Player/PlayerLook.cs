@@ -8,7 +8,10 @@ public class PlayerLook : MonoBehaviour
 
     private float xRotation = 0f;
 
-    public PlayerMain playerMain; 
+    public PlayerMain playerMain;
+
+    public float mouseX;
+    public float mouseY;
 
     void Start()
     {
@@ -20,8 +23,8 @@ public class PlayerLook : MonoBehaviour
     void Update()
     {
         // Get mouse movement input
-        float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+        mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
+        mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
 
         // Rotate the player left/right
         playerBody.Rotate(Vector3.up * mouseX);
