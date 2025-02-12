@@ -9,15 +9,19 @@ public class Enemy : MonoBehaviour
     public int damage = 10;
     public int maxHealth = 100;
     public int currentHealth;
-    public float followDistance = 10f;
+
+    public int followDistance = 100;
+    public int attackDistance = 5;
     
     private bool _alive;
-    private bool isDealingDamage;
+    public bool isDealingDamage;
     private bool frameCooldown;
 
     //för animation
-    private float currentFrame = 0;
-    private const float amountOfFrames = 6;
+    public short currentFrame = 0;
+    public short currentRow = 0; //0 är walking, 1 är attacking
+    private const short amountOfWalkingFrames = 6;
+    private const short amountOfAttackFrames = 12;
 
     void Start()
     {
@@ -40,12 +44,12 @@ public class Enemy : MonoBehaviour
             if (distanceToPlayer <= followDistance)
             {
                 FollowPlayer();
-                NextFrame(9 * Time.deltaTime);
+                NextFrame(9);
             }
 
-            if (distanceToPlayer <= 10 && !isDealingDamage)
+            if (distanceToPlayer <= attackDistance && !isDealingDamage)
             {
-                StartCoroutine(DealDamage(2, 5));
+                StartCoroutine(DealDamage(1, 9));
             }
         }
     }
@@ -56,17 +60,35 @@ public class Enemy : MonoBehaviour
         {
             //byter frame
             currentFrame++;
-            currentFrame %= amountOfFrames;
+            currentFrame %= amountOfAttackFrames;
+            if (isDealingDamage)
+            {
+                currentRow = 0;
+            }
+            else
+            {
+                currentRow = 1;
+                currentFrame %= amountOfWalkingFrames;
+            }
 
             //byter frame i material
             MaterialPropertyBlock propertyBlock = new MaterialPropertyBlock();
-            propertyBlock.SetVector("_BaseMap_ST", new Vector4(1 / amountOfFrames, 1, currentFrame / amountOfFrames, 0));
+            propertyBlock.SetVector("_BaseMap_ST", new Vector4(
+                1.0f / 12.0f, 
+                1.0f / 2.0f, 
+                (float)currentFrame / (float)amountOfAttackFrames, 
+                (float)currentRow / 2.0f));
             GetComponent<MeshRenderer>().SetPropertyBlock(propertyBlock);
 
             //startar timer
             frameCooldown = true;
             Invoke("ResetFrameCooldown", delay);
         }
+    }
+
+    private void ResetFrame()
+    {
+        currentFrame = 0;
     }
 
     private void ResetFrameCooldown()
@@ -97,6 +119,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator DealDamage(int damageAmount, float delay)
     {
+        ResetFrame();
         isDealingDamage = true;
         player.GetComponent<PlayerMain>().TakeDamage(damageAmount);
 
