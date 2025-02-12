@@ -5,13 +5,17 @@ using UnityEngine.SceneManagement;
 public class PlayerMain : MonoBehaviour
 {
     public AudioClip sand;
-    public AudioClip water;
+    public AudioClip vatten;
     public float walkSpeed = 5f;
     public float sprintSpeed = 10f;
     public float jumpForce = 7f;
     public float gravity = 10f;
     public float health;
     public float maxHealth = 10f;
+
+    public float backflipDuration = 1f;
+    private float currentBackflipTime = 1f;
+    private bool isBackflipping = false;
 
     public Camera playerCamera;
     public float normalFOV = 60f;
@@ -129,8 +133,7 @@ public class PlayerMain : MonoBehaviour
         {
             onWater = true;
             audioSource.Stop();
-            audioSource.PlayOneShot(water, 0.75f);
-            //start water sound
+            audioSource.PlayOneShot(vatten, 0.75f);
         }
         else if (other.gameObject.name == "sandhappy")
         {
@@ -138,7 +141,6 @@ public class PlayerMain : MonoBehaviour
             if (!audioSource.isPlaying)
             {
                 audioSource.PlayOneShot(sand, 0.75f);
-                //audioSource.Play();
             }
         }
     }
@@ -151,8 +153,16 @@ public class PlayerMain : MonoBehaviour
             if (!audioSource.isPlaying)
             {
                 audioSource.PlayOneShot(sand, 0.75f);
-
             }
+        }
+        if (other.gameObject.name == "triggerhappy")
+        {
+            onWater = true;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(vatten, 0.75f);
+            }
+
         }
     }
 }
