@@ -14,9 +14,6 @@ public class PlayerMain : MonoBehaviour
     public float maxHealth = 10f;
 
     public float backflipDuration = 1f;
-    private float currentBackflipTime = 1f;
-    private bool isBackflipping = false;
-
     public Camera playerCamera;
     public float normalFOV = 60f;
     public float sprintFOV = 75f;
