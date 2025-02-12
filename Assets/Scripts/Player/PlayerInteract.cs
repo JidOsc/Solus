@@ -79,12 +79,12 @@ public class PlayerInteract : MonoBehaviour
                         oreAmount += ore.quantity;
                         objectsToRemove.Add(obj.gameObject);
                     }
-                    else if (obj.tag == "DroppedStone")
+                    if (obj.tag == "DroppedStone")
                     {
                         stoneAmount += ore.quantity;
                         objectsToRemove.Add(obj.gameObject);
                     }
-                    else if (obj.tag == "TreeDrop")
+                    if (obj.tag == "TreeDrop")
                     {
                         WoodAmount += ore.quantity;
                         objectsToRemove.Add(obj.gameObject);
@@ -102,14 +102,16 @@ public class PlayerInteract : MonoBehaviour
             Destroy(objectsToRemove[i]);
         }
         objectsToRemove.Clear();
-        if (isBuilt == false)
+        if (isBuilt == false && building.menu == true && stoneAmount >= 6)
         { 
             if (Input.GetKeyDown(KeyCode.B))
             {
                 building.Build();
                 isBuilt = true;
+                stoneAmount -= 6;
             }
         }
+        building.BuildMenu();
     }
 
     private void OnTriggerEnter(Collider other)

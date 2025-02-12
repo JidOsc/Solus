@@ -25,6 +25,8 @@ public class OverlayMngr : MonoBehaviour
     public GameObject OreText;
     public GameObject StoneText;
     public GameObject TreeText;
+    public GameObject Textbox2;
+    public GameObject Textbox3;
 
     void Start()
     {

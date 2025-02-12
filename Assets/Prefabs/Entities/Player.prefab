@@ -445,11 +445,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518557cf513f50e43a732217b31a910e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stationPrefab: {fileID: 0}
+  stationPrefab: {fileID: 4753874515576094990, guid: 27a7e072e58332d42a45109d2a8d1748, type: 3}
   player: {fileID: 0}
-  level: {fileID: 0}
-  Overlay: {fileID: 3203722573940053398, guid: e783edd98df08414ead96886ada6153f, type: 3}
+  level: {fileID: 6000117332307821988, guid: eb7c2874acacc7047b5fd78ae20cb753, type: 3}
+  overlay: {fileID: 0}
   cameran: {fileID: 5445300961687953437}
+  menu: 0
 --- !u!82 &7901101681076747328
 AudioSource:
   m_ObjectHideFlags: 0
