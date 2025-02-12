@@ -15,6 +15,7 @@ TagManager:
   - DroppedStone
   - Tree
   - TreeDrop
+  - PlayerCamera
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - UI
   - Interactables
   - Collisions
-  - 
+  - Terrain
   - 
   - 
   - 
