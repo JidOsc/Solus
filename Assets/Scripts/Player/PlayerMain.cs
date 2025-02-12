@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMain : MonoBehaviour
 {
+    public AudioClip sand;
+    public AudioClip water;
     public float walkSpeed = 5f;
     public float sprintSpeed = 10f;
     public float jumpForce = 7f;
@@ -127,13 +129,16 @@ public class PlayerMain : MonoBehaviour
         {
             onWater = true;
             audioSource.Stop();
+            audioSource.PlayOneShot(water, 0.75f);
+            //start water sound
         }
         else if (other.gameObject.name == "sandhappy")
         {
             onWater = false;
             if (!audioSource.isPlaying)
             {
-                audioSource.Play();
+                audioSource.PlayOneShot(sand, 0.75f);
+                //audioSource.Play();
             }
         }
     }
@@ -145,7 +150,8 @@ public class PlayerMain : MonoBehaviour
             onWater = false;
             if (!audioSource.isPlaying)
             {
-                audioSource.Play();
+                audioSource.PlayOneShot(sand, 0.75f);
+
             }
         }
     }
