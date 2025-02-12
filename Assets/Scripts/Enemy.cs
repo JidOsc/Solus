@@ -4,19 +4,25 @@ using System.Collections;
 public class Enemy : MonoBehaviour
 {
     public GameObject player;
+
     public float speed = 2f;
-    public int Maxhealth = 100;
-    public int currentHealth;
     public int damage = 10;
-    public float obstacleRange = 5f;
+    public int maxHealth = 100;
+    public int currentHealth;
+    public float followDistance = 10f;
+    
     private bool _alive;
     private bool isDealingDamage;
-    public float followDistance = 10f;
+    private bool frameCooldown;
+
+    //för animation
+    private float currentFrame = 0;
+    private const float amountOfFrames = 6;
 
     void Start()
     {
         _alive = true;
-        currentHealth = Maxhealth;
+        currentHealth = maxHealth;
         isDealingDamage = false;
 
         if (player == null)
@@ -34,6 +40,7 @@ public class Enemy : MonoBehaviour
             if (distanceToPlayer <= followDistance)
             {
                 FollowPlayer();
+                NextFrame(9 * Time.deltaTime);
             }
 
             if (distanceToPlayer <= 10 && !isDealingDamage)
@@ -41,6 +48,30 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(DealDamage(2, 5));
             }
         }
+    }
+
+    private void NextFrame(float delay)
+    {
+        if (!frameCooldown)
+        {
+            //byter frame
+            currentFrame++;
+            currentFrame %= amountOfFrames;
+
+            //byter frame i material
+            MaterialPropertyBlock propertyBlock = new MaterialPropertyBlock();
+            propertyBlock.SetVector("_BaseMap_ST", new Vector4(1 / amountOfFrames, 1, currentFrame / amountOfFrames, 0));
+            GetComponent<MeshRenderer>().SetPropertyBlock(propertyBlock);
+
+            //startar timer
+            frameCooldown = true;
+            Invoke("ResetFrameCooldown", delay);
+        }
+    }
+
+    private void ResetFrameCooldown()
+    {
+        frameCooldown = false;
     }
 
     public bool TakeDamage(int amount)
@@ -53,39 +84,13 @@ public class Enemy : MonoBehaviour
         return false;
     }
 
-    public void Die()
-    {
-        Debug.Log("Enemy died!");
-        Destroy(gameObject);
-    }
-
-    public void SetAlive(bool alive)
-    {
-        _alive = alive;
-    }
-
-    public void ReactHoHit()
-    {
-        SetAlive(false);
-    }
-
-    void OnTriggerStay(Collider player)
-    {
-        if (player.tag == "Player")
-        {
-            FollowPlayer();
-        }
-    }
-
-    void FollowPlayer()
+    private void FollowPlayer()
     {
         if (Vector3.Distance(transform.position, player.transform.position) > followDistance)
         {
-            GetComponent<Animator>().SetBool("walking", false);
             return;
         }
 
-        GetComponent<Animator>().SetBool("walking", true);
         Vector3 pos = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         GetComponent<Rigidbody>().MovePosition(pos);
     }
