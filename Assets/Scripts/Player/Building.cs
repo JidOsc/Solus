@@ -3,31 +3,24 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-
-    public PlayerLook playerLook;
-
     public GameObject stationPrefab;
+    public GameObject player;
     public GameObject level;
+
+    public Camera cameran;
 
     public void Start()
     {
         stationPrefab = GameObject.FindGameObjectWithTag("Station");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void Build()
     {
-        Vector3 mouse = Input.mousePosition;
-
-        Ray casepoint = Camera.main.ScreenPointToRay(mouse);
-        RaycastHit hit;
-
-        if(Physics.Raycast(casepoint, out hit, 10))
+        if(Physics.Raycast(player.transform.position, cameran.transform.forward, out RaycastHit hit, 20))
         {
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                var build = Instantiate(stationPrefab, new Vector3(hit.point.x,hit.point.y, hit.point.z), transform.rotation);
+                var build = Instantiate(stationPrefab, new Vector3(hit.point.x,hit.point.y + 2.5f, hit.point.z), transform.rotation);
                 build.transform.parent = level.transform;
-            }
         }
     }
 

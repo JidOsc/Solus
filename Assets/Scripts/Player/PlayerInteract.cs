@@ -15,7 +15,10 @@ public class PlayerInteract : MonoBehaviour
     public List<GameObject> interactableObjects = new List<GameObject>();
     List<GameObject> objectsToRemove = new List<GameObject>();
 
+    public Building building;
+
     bool pickedThisFrame = false;
+    bool isBuilt = false;
 
     void Update()
     {
@@ -99,6 +102,14 @@ public class PlayerInteract : MonoBehaviour
             Destroy(objectsToRemove[i]);
         }
         objectsToRemove.Clear();
+        if (isBuilt == false)
+        { 
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                building.Build();
+                isBuilt = true;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)

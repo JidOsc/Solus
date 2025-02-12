@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 6879786828015373003}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: PlayerCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -366,6 +366,7 @@ MonoBehaviour:
   WoodAmount: 0
   overlay: {fileID: 0}
   interactableObjects: []
+  building: {fileID: 1122920251992812365}
 --- !u!114 &7624358632751155401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,9 +637,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518557cf513f50e43a732217b31a910e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLook: {fileID: 0}
   stationPrefab: {fileID: 0}
+  player: {fileID: 0}
   level: {fileID: 0}
+  cameran: {fileID: 5445300961687953437}
 --- !u!1 &8678860373302221603
 GameObject:
   m_ObjectHideFlags: 0
