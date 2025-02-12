@@ -6,6 +6,7 @@ public class Building : MonoBehaviour
     public GameObject stationPrefab;
     public GameObject player;
     public GameObject level;
+    public GameObject Overlay;
 
     public Camera cameran;
 
@@ -13,6 +14,11 @@ public class Building : MonoBehaviour
     {
         stationPrefab = GameObject.FindGameObjectWithTag("Station");
         player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    public void BuildMenu()
+    {
+
     }
 
     public void Build()
