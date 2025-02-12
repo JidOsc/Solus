@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
 
 [ExecuteInEditMode]
 public class VerticalBox : MonoBehaviour
@@ -29,6 +30,9 @@ public class VerticalBox : MonoBehaviour
 
     public void GameButtonPressed()
     {
+        MoveMenuBackground moveMenuBackground = GetComponent<MoveMenuBackground>();
+        moveMenuBackground.menuActive = true;
+        StartCoroutine(startDelay());
         SceneManager.LoadScene(1);
     }
 
@@ -53,5 +57,10 @@ public class VerticalBox : MonoBehaviour
     {
         PlayerPrefs.SetFloat("VOLUME", value);
         PlayerPrefs.Save();
+    }
+
+    private IEnumerator startDelay() //Delay till när man har tryckt play och bakgrunden ändras
+    {
+        yield return new WaitForSeconds(5);
     }
 }
