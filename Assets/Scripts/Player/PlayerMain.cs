@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMain : MonoBehaviour
 {
+
+    [SerializeField] AudioClip sandClip;
+    [SerializeField] AudioClip waterClip;
     public AudioClip sand;
     public AudioClip vatten;
     public float walkSpeed = 5f;
@@ -94,6 +97,7 @@ public class PlayerMain : MonoBehaviour
 
         isMoving = moveX != 0 || moveZ != 0;
 
+        /*
         if (isMoving && !audioSource.isPlaying && !onWater)
         {
             audioSource.Play();
@@ -102,6 +106,7 @@ public class PlayerMain : MonoBehaviour
         {
             audioSource.Stop();
         }
+        */
     }
 
     public void TakeDamage(int damage)
@@ -135,30 +140,27 @@ public class PlayerMain : MonoBehaviour
         else if (other.gameObject.name == "sandhappy")
         {
             onWater = false;
-            if (!audioSource.isPlaying)
-            {
-                audioSource.PlayOneShot(sand, 0.75f);
-            }
+            audioSource.Stop();
+            audioSource.PlayOneShot(sand, 0.75f);
+            
         }
     }
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "triggerhappy")
+         if (other.gameObject.name == "triggerhappy")
         {
             onWater = false;
-            if (!audioSource.isPlaying)
-            {
+            audioSource.Stop();
                 audioSource.PlayOneShot(sand, 0.75f);
-            }
+            
         }
-        if (other.gameObject.name == "triggerhappy")
+        if (other.gameObject.name == "sandhappy")
         {
             onWater = true;
-            if (!audioSource.isPlaying)
-            {
+            audioSource.Stop();
                 audioSource.PlayOneShot(vatten, 0.75f);
-            }
+            
 
         }
     }
