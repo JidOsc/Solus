@@ -32,7 +32,7 @@ public class RotationObject : MonoBehaviour
                 obj.transform.LookAt(player_pos);
 
             }
-            if (Vector3.Distance(player.transform.position, lighty.transform.position) > 40)
+           /* if (Vector3.Distance(player.transform.position, lighty.transform.position) > 40)
             {
                 player_pos = player.transform.position;
 
@@ -46,7 +46,7 @@ public class RotationObject : MonoBehaviour
             else if (Vector3.Distance(player_pos, lighty.transform.position) < 20)
             {
                 lighty.SetActive(false);
-            }
+            }*/
 
             if (obj.tag == "Ore" || obj.tag == "Enemies" || obj.tag == "Stone")
             {
