@@ -34,7 +34,11 @@ public class PlayerInteract : MonoBehaviour
                 if (obj.tag == "Enemies")
                 {
                     Enemy enemy = obj.GetComponent<Enemy>();
-                    enemy.TakeDamage(damage);
+                    if (enemy.TakeDamage(damage)) //true om fienden dött
+                    {
+                        objectsToRemove.Add(obj);
+                    }
+                    break;
                 }
 
                 else if (obj.tag == "Ore" || obj.tag == "Stone" || obj.tag == "Tree")
@@ -44,6 +48,7 @@ public class PlayerInteract : MonoBehaviour
                     {
                         objectsToRemove.Add(obj.gameObject);
                     }
+                    break;
                 }
             }
 
@@ -59,6 +64,7 @@ public class PlayerInteract : MonoBehaviour
                         station.Repair();
                     }
                 }
+                break;
             }
 
             else if (obj.tag == "DroppedOre" || obj.tag == "DroppedStone" || obj.tag == "TreeDrop")
@@ -87,6 +93,7 @@ public class PlayerInteract : MonoBehaviour
                         objectsToRemove.Add(obj.gameObject);
                     }
                 }
+                break;
             }
         }
 
@@ -96,7 +103,10 @@ public class PlayerInteract : MonoBehaviour
             {
                 interactableObjects.Remove(objectsToRemove[i]);
             }
-            Destroy(objectsToRemove[i]);
+            if(objectsToRemove[i].tag != "Enemies")
+            {
+                Destroy(objectsToRemove[i]);
+            }
         }
         objectsToRemove.Clear();
         if (isBuilt == false && building.menu == true && stoneAmount >= 6)

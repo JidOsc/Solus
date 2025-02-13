@@ -107,14 +107,16 @@ public class Enemy : MonoBehaviour
         frameCooldown = false;
     }
 
-    public void TakeDamage(int amount)
+    public bool TakeDamage(int amount)
     {
         currentHealth -= amount;
         if (_alive && currentHealth <= 0)
         {
             _alive = false;
             ResetFrame();
+            return true;
         }
+        return false;
     }
 
     private void FollowPlayer()
