@@ -67,7 +67,12 @@ public class OverlayMngr : MonoBehaviour
         displayText.GetComponent<TMP_Text>().text = text;
     }
 
-    public void ShowFaintedScreen()
+    public void FaintIn(float seconds)
+    {
+        Invoke("ShowFaintedScreen", seconds);
+    }
+
+    private void ShowFaintedScreen()
     {
         Debug.Log("dod");
         FAINTED.SetActive(true);
