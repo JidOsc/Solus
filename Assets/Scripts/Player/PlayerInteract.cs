@@ -9,6 +9,7 @@ public class PlayerInteract : MonoBehaviour
     public int oreAmount = 0;
     public int stoneAmount = 0;
     public int WoodAmount = 0;
+    public AudioClip skadar;
 
     public OverlayMngr overlay;
 
@@ -17,8 +18,15 @@ public class PlayerInteract : MonoBehaviour
 
     public Building building;
 
+    private AudioSource audioSource;
+
     public bool pickedThisFrame = false;
     bool isBuilt = false;
+
+    private void Start()
+    {
+        audioSource = gameObject.GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -30,6 +38,8 @@ public class PlayerInteract : MonoBehaviour
             if (Input.GetMouseButtonDown(0)) //hugger
             {
                 overlay.Attack();
+
+                audioSource.PlayOneShot(skadar, 0.75f);
 
                 if (obj.tag == "Enemies")
                 {
@@ -43,6 +53,9 @@ public class PlayerInteract : MonoBehaviour
 
                 else if (obj.tag == "Ore" || obj.tag == "Stone" || obj.tag == "Tree")
                 {
+                    audioSource.PlayOneShot(skadar, 0.75f);
+
+
                     OreScript ore = obj.GetComponent<OreScript>();
                     if (ore.Mine()) //true om ore dog
                     {
