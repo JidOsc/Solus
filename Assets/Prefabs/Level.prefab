@@ -267,7 +267,7 @@ TerrainCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -515,6 +515,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1122920251992812365, guid: 4562ff735ff787b41b4dc7db2a98d6f1, type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 6000117332307821988}
     - target: {fileID: 7393176407337172850, guid: 4562ff735ff787b41b4dc7db2a98d6f1, type: 3}
       propertyPath: m_Name
       value: Player
