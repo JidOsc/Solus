@@ -16,6 +16,7 @@ TagManager:
   - Tree
   - TreeDrop
   - PlayerCamera
+  - Jelly
   layers:
   - Default
   - TransparentFX
