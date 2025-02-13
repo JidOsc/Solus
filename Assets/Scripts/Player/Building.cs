@@ -26,19 +26,24 @@ public class Building : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X) && menu == false)
         {
+            Blob = new GameObject();
             overlay.Textbox3.SetActive(true);
             overlay.Textbox2.SetActive(false);
             menu = true;
 
-            if (Physics.Raycast(player.transform.position, cameran.transform.forward, out hit, 20))
+            if (Physics.Raycast(player.transform.position, cameran.transform.forward, out hit, 20,~0, QueryTriggerInteraction.Ignore))
             {
                 for (int i = 0; i < 1; i++)
                 {
                     Blob = Instantiate(whereToBuild, new Vector3(hit.point.x, hit.point.y, hit.point.z), transform.rotation);
                     Blob.transform.parent = player.transform;
                 }
-                whereToBuild.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
             }
+        }
+
+        if (Physics.Raycast(player.transform.position, cameran.transform.forward, out hit, 20, ~0, QueryTriggerInteraction.Ignore) && menu == true)
+        {
+            Blob.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
         }
 
         if (Input.GetKeyDown(KeyCode.Z) && menu == true)

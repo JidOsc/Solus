@@ -442,15 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textComponent: {fileID: 8287907294716906164}
-  lines:
-  - Press C to view the next piece of text and X to view the previous.
-  - You've found ore! Press right mouse button to mine it!
-  - You've mined ore! Press ??? to pick it up!
-  - Oh no! You've encountered a wild beast! Defend yourself!
-  - 
-  - 
-  - 
-  - 
+  lines: []
   textSpeed: 0.05
   textIndex: 0
 --- !u!1 &1098220425662728552
@@ -1206,15 +1198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textComponent: {fileID: 8287907294716906164}
-  lines:
-  - Press C to view the next piece of text and X to view the previous.
-  - You've found ore! Press right mouse button to mine it!
-  - You've mined ore! Press ??? to pick it up!
-  - Oh no! You've encountered a wild beast! Defend yourself!
-  - 
-  - 
-  - 
-  - 
+  lines: []
   textSpeed: 0.05
   textIndex: 0
 --- !u!1 &2675539227910002072
@@ -1307,14 +1291,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 8287907294716906164}
   lines:
-  - Press C to view the next piece of text and X to view the previous.
-  - You've found ore! Press right mouse button to mine it!
-  - You've mined ore! Press ??? to pick it up!
-  - Oh no! You've encountered a wild beast! Defend yourself!
-  - 
-  - 
-  - 
-  - 
+  - "Oh no! I\u2019ve crashed on a foreign planet! It looks like I need to find 10x
+    green ore and a pole to get started building a radio-tower to try and get help."
+  - Press E to view the next piece of text and Q to view the previous.
+  - It looks like I can mine ore by attacking it.
+  - "That thing doesn\u2019t look happy to share! I need to prepare to defend myself!"
+  - "I\u2019ve made the radar-pole, now I need to find a radio dish and 20x stone
+    to upgrade it."
+  - 'Looks like I need to find a light bulb, 10x ore, 15x stone and 5x wood to finalize
+    the '
+  - 'The radio-tower is finished! And it seems to be calling for help! '
+  - Noo! I seem to have died, maybe I can respawn like in a game?
+  - "No way! I have respawned! I\u2019m immortal! "
   textSpeed: 0.05
   textIndex: 0
 --- !u!1 &3203722573940053398
@@ -2801,8 +2789,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2987,7 +2975,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'You need 6 stone
 
-    Press B to build'
+    Press F to build'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c67f57f39a2632c47b516414a2a6c801, type: 2}
   m_sharedMaterial: {fileID: 7491122543330155444, guid: c67f57f39a2632c47b516414a2a6c801, type: 2}

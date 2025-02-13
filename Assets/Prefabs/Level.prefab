@@ -74,6 +74,9 @@ MonoBehaviour:
   - {fileID: 1317047053211836411, guid: ebf0bc2dc7ed61b4f95307bc49472fa0, type: 3}
   ores:
   - {fileID: 8326932588880210358, guid: eeab29b0d3ce9954c84f1e77adf49a13, type: 3}
+  jelly:
+  - {fileID: 2683868171063343012, guid: 2b889bea834f001439f3efc13559a8de, type: 3}
+  - {fileID: 5513665022267140979, guid: a87dc8ad21e117946b91cfb96bc9a8e1, type: 3}
   TreePrefab: {fileID: 6700183151132978107, guid: 0861f3c1746220f4c97cd970184f017d, type: 3}
 --- !u!1 &6276446696371522973
 GameObject:
@@ -267,7 +270,7 @@ TerrainCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -515,6 +518,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1122920251992812365, guid: 4562ff735ff787b41b4dc7db2a98d6f1, type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 6000117332307821988}
     - target: {fileID: 7393176407337172850, guid: 4562ff735ff787b41b4dc7db2a98d6f1, type: 3}
       propertyPath: m_Name
       value: Player
