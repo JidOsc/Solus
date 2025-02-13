@@ -2987,7 +2987,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'You need 6 stone
 
-    Press B to build'
+    Press F to build'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c67f57f39a2632c47b516414a2a6c801, type: 2}
   m_sharedMaterial: {fileID: 7491122543330155444, guid: c67f57f39a2632c47b516414a2a6c801, type: 2}
