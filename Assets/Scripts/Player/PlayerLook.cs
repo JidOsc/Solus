@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-    public float sensitivity = 100f; // Mouse sensitivity
+    public float sensitivity = 400f; // Mouse sensitivity
     public Transform playerBody; // Reference to the player body (for horizontal rotation)
 
     private float xRotation = 0f;

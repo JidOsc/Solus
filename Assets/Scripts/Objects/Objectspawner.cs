@@ -9,6 +9,7 @@ public class Objectspawner : MonoBehaviour
 
     public List<GameObject> stones = new List<GameObject>();
     public List<GameObject> ores = new List<GameObject>();
+    public List<GameObject> jelly = new List<GameObject>();
 
     public GameObject TreePrefab;
 
@@ -37,7 +38,7 @@ public class Objectspawner : MonoBehaviour
             
             Vector3 pos = new Vector3(x, 0, z);
             
-            pos.y = Terrain.activeTerrain.SampleHeight(pos) + Terrain.activeTerrain.GetPosition().y + 0.25f;
+            pos.y = Terrain.activeTerrain.SampleHeight(pos) + Terrain.activeTerrain.GetPosition().y + 1;
 
 
             var spawning = Instantiate(ores[0], pos, transform.rotation);
@@ -69,6 +70,20 @@ public class Objectspawner : MonoBehaviour
 
 
             var spawning = Instantiate(TreePrefab, pos, transform.rotation);
+            spawning.transform.parent = level.transform;
+        }
+        for (int i = 0; i < 100; i++)
+        {
+            int jelly_num = Random.Range(0, 1);
+            int x = Random.Range(-500, 500);
+            int z = Random.Range(-500, 500);
+
+            Vector3 pos = new Vector3(x, 0, z);
+
+            pos.y = 11.25f;
+
+
+            var spawning = Instantiate(jelly[jelly_num], pos, transform.rotation);
             spawning.transform.parent = level.transform;
         }
     }
