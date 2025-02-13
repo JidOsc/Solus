@@ -103,13 +103,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 9118517663248347731, guid: 9a71dd38edbb3564eaba1ac1c7de98de, type: 3}
-  speed: 2
+  speed: 4
   damage: 2
   maxHealth: 100
   currentHealth: 0
-  followDistance: 10
-  currentFrame: 0
-  currentRow: 0
+  followDistance: 50
+  attackDistance: 5
 --- !u!54 &4182864721295803938
 Rigidbody:
   m_ObjectHideFlags: 0

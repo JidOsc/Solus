@@ -14,14 +14,15 @@ public class Enemy : MonoBehaviour
     public int attackDistance = 5;
     
     private bool _alive;
-    public bool isDealingDamage;
+    private bool isDealingDamage;
     private bool frameCooldown;
 
     //för animation
-    public short currentFrame = 0;
-    public short currentRow = 0; //0 är walking, 1 är attacking
-    private const short amountOfWalkingFrames = 6;
-    private const short amountOfAttackFrames = 12;
+    private short currentFrame = 0;
+    private short currentRow = 0; //0 är walking, 1 är attacking
+    private const short walkingFrames = 6;
+    private const short deathFrames = 10;
+    private const short maxFrames = 12;
 
     void Start()
     {
@@ -37,19 +38,21 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (_alive && player != null)
+        if (player != null)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
             if (distanceToPlayer <= followDistance)
             {
-                FollowPlayer();
-                NextFrame(9);
-            }
-
-            if (distanceToPlayer <= attackDistance && !isDealingDamage)
-            {
-                StartCoroutine(DealDamage(1, 9));
+                if (_alive)
+                {
+                    FollowPlayer();
+                    if(distanceToPlayer <= attackDistance && !isDealingDamage)
+                    {
+                        StartCoroutine(DealDamage(1, 4.0f / 3.0f));
+                    }
+                }
+                NextFrame(1.0f / 9.0f);
             }
         }
     }
@@ -60,24 +63,32 @@ public class Enemy : MonoBehaviour
         {
             //byter frame
             currentFrame++;
-            currentFrame %= amountOfAttackFrames;
-            if (isDealingDamage)
+            currentFrame %= maxFrames;
+            if(!_alive)
             {
                 currentRow = 0;
+                if(currentFrame == deathFrames)
+                {
+                    Destroy(gameObject);
+                }
+            }
+            else if (isDealingDamage)
+            {
+                currentRow = 1;
             }
             else
             {
-                currentRow = 1;
-                currentFrame %= amountOfWalkingFrames;
+                currentRow = 2;
+                currentFrame %= walkingFrames;
             }
 
             //byter frame i material
             MaterialPropertyBlock propertyBlock = new MaterialPropertyBlock();
             propertyBlock.SetVector("_BaseMap_ST", new Vector4(
                 1.0f / 12.0f, 
-                1.0f / 2.0f, 
-                (float)currentFrame / (float)amountOfAttackFrames, 
-                (float)currentRow / 2.0f));
+                1.0f / 3.0f, 
+                (float)currentFrame / (float)maxFrames, 
+                (float)currentRow / 3.0f));
             GetComponent<MeshRenderer>().SetPropertyBlock(propertyBlock);
 
             //startar timer
@@ -96,14 +107,14 @@ public class Enemy : MonoBehaviour
         frameCooldown = false;
     }
 
-    public bool TakeDamage(int amount)
+    public void TakeDamage(int amount)
     {
         currentHealth -= amount;
-        if (currentHealth <= 0)
+        if (_alive && currentHealth <= 0)
         {
-            return true;
+            _alive = false;
+            ResetFrame();
         }
-        return false;
     }
 
     private void FollowPlayer()

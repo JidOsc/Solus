@@ -34,10 +34,7 @@ public class PlayerInteract : MonoBehaviour
                 if (obj.tag == "Enemies")
                 {
                     Enemy enemy = obj.GetComponent<Enemy>();
-                    if (enemy.TakeDamage(damage)) //true om fienden dog
-                    {
-                        objectsToRemove.Add(obj);
-                    }
+                    enemy.TakeDamage(damage);
                 }
 
                 else if (obj.tag == "Ore" || obj.tag == "Stone" || obj.tag == "Tree")

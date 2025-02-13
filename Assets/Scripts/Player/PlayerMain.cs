@@ -185,37 +185,23 @@ public class PlayerMain : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "triggerhappy")
-        {
-            onWater = true;
-            audioSource.Stop();
-            audioSource.PlayOneShot(vatten, 0.75f);
-        }
-        else if (other.gameObject.name == "sandhappy")
-        {
-            onWater = false;
-            audioSource.Stop();
-            audioSource.PlayOneShot(sand, 0.75f);
-            
-        }
+        
     }
 
-    public void OnTriggerExit(Collider other)
+    public void OnTriggerStay(Collider other)
     {
-         if (other.gameObject.name == "triggerhappy")
+        if (!audioSource.isPlaying)
         {
-            onWater = false;
-            audioSource.Stop();
-                audioSource.PlayOneShot(sand, 0.75f);
-            
-        }
-        if (other.gameObject.name == "sandhappy")
-        {
-            onWater = true;
-            audioSource.Stop();
+            if (other.gameObject.name == "triggerhappy")
+            {
+                onWater = true;
                 audioSource.PlayOneShot(vatten, 0.75f);
-            
-
+            }
+            else if (other.gameObject.name == "sandhappy")
+            {
+                onWater = false;
+                audioSource.PlayOneShot(sand, 0.75f);
+            }
         }
     }
 }
