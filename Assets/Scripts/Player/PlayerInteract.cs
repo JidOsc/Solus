@@ -17,7 +17,7 @@ public class PlayerInteract : MonoBehaviour
 
     public Building building;
 
-    bool pickedThisFrame = false;
+    public bool pickedThisFrame = false;
     bool isBuilt = false;
 
     void Update()
@@ -66,10 +66,10 @@ public class PlayerInteract : MonoBehaviour
 
             else if (obj.tag == "DroppedOre" || obj.tag == "DroppedStone" || obj.tag == "TreeDrop")
             {
-                overlay.DisplayText("Press Left Mouse Button to pick up ore");
+                overlay.DisplayText("Press right mouse button to pick up ore");
 
                 //if player picks up ore
-                if (!pickedThisFrame && Input.GetMouseButtonDown(0))
+                if (!pickedThisFrame && Input.GetMouseButtonDown(1))
                 {
                     DroppedOreScript ore = obj.GetComponent<DroppedOreScript>();
 

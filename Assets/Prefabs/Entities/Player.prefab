@@ -366,6 +366,7 @@ MonoBehaviour:
   overlay: {fileID: 0}
   interactableObjects: []
   building: {fileID: 1122920251992812365}
+  pickedThisFrame: 0
 --- !u!114 &7624358632751155401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,6 +449,7 @@ MonoBehaviour:
   stationPrefab: {fileID: 4753874515576094990, guid: 27a7e072e58332d42a45109d2a8d1748, type: 3}
   player: {fileID: 0}
   level: {fileID: 6000117332307821988, guid: eb7c2874acacc7047b5fd78ae20cb753, type: 3}
+  whereToBuild: {fileID: 1028973561735563778, guid: 8289dfc84b6026c4484030b3b5ade7a4, type: 3}
   overlay: {fileID: 0}
   cameran: {fileID: 5445300961687953437}
   menu: 0
