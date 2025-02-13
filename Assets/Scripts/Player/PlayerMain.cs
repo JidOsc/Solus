@@ -150,17 +150,6 @@ public class PlayerMain : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
         isMoving = moveX != 0 || moveZ != 0;
-
-        /*
-        if (isMoving && !audioSource.isPlaying && !onWater)
-        {
-            audioSource.Play();
-        }
-        else if (!isMoving || onWater)
-        {
-            audioSource.Stop();
-        }
-        */
     }
 
     public void TakeDamage(int damage)
@@ -170,7 +159,7 @@ public class PlayerMain : MonoBehaviour
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            overlay.ShowFaintedScreen();
+            overlay.FaintIn(2.0f);
         }
     }
 
@@ -181,11 +170,6 @@ public class PlayerMain : MonoBehaviour
         transform.position = new Vector3(0, 0, 0);
         GetComponent<PlayerInteract>().oreAmount = 0;
         health = maxHealth;
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        
     }
 
     public void OnTriggerStay(Collider other)

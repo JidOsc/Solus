@@ -9,7 +9,7 @@ public class Text : MonoBehaviour
     public string[] lines;
     public float textSpeed;
 
-    public int textIndex;
+    public int textIndex; //numret på texten som visas
 
     void Start()
     {
