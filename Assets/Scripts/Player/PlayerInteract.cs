@@ -111,7 +111,7 @@ public class PlayerInteract : MonoBehaviour
         objectsToRemove.Clear();
         if (isBuilt == false && building.menu == true && stoneAmount >= 6)
         { 
-            if (Input.GetKeyDown(KeyCode.B))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 building.Build();
                 isBuilt = true;
