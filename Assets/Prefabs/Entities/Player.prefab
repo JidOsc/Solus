@@ -401,6 +401,9 @@ MonoBehaviour:
   overlay: {fileID: 0}
   enemy: {fileID: 0}
   staminaBar: {fileID: 0}
+  ore: 0
+  damage: 20
+  attackRange: 4
 --- !u!143 &8739459620347010922
 CharacterController:
   m_ObjectHideFlags: 0
