@@ -38,6 +38,44 @@ public class PlayerMain : MonoBehaviour
     private bool isMoving = false;
     private AudioSource audioSource;
 
+
+
+    private float currentBackflipTime = 1f;
+    private bool isBackflipping = false;
+    private float backflipCooldown = 1f; // 1 second cooldown
+    private float backflipCooldownTimer = 0f; // Timer for tracking the cooldown
+
+    void StartBackflip()
+    {
+        isBackflipping = true;
+        currentBackflipTime = 0f; // Reset timer
+
+        // Start the cooldown timer
+        backflipCooldownTimer = backflipCooldown;
+    }
+
+    void PerformBackflip()
+    {
+        // Update the backflip time
+        currentBackflipTime += Time.deltaTime;
+
+        // Calculate the backflip angle (this goes from 0 to 360 degrees)
+        float backflipAngle = Mathf.Lerp(0f, -360f, currentBackflipTime / backflipDuration);
+
+        // Apply the rotation to the camera (rotate around the x-axis)
+        playerCamera.transform.localRotation = Quaternion.Euler(backflipAngle, 0f, 0f);
+
+        // Stop the backflip once the duration is over
+        if (currentBackflipTime >= backflipDuration)
+        {
+            isBackflipping = false;
+        }
+    }
+
+    public float ore = 0;
+    public int damage = 20;
+    public float attackRange = 4f;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -57,6 +95,22 @@ public class PlayerMain : MonoBehaviour
 
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.B) && backflipCooldownTimer <= 0f)
+        {
+            StartBackflip();
+        }
+
+        if (isBackflipping)
+        {
+            PerformBackflip();
+        }
+
+        if (backflipCooldownTimer > 0f)
+        {
+            backflipCooldownTimer -= Time.deltaTime;
+        }
+
         isGrounded = controller.isGrounded;
         if (isGrounded && velocity.y < 0)
         {
