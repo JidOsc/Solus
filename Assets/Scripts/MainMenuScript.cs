@@ -34,7 +34,7 @@ public class VerticalBox : MonoBehaviour
     public void GameButtonPressed()
     {
         StartCoroutine(BackgroundFade());
-        Invoke("StartGame", 3.0f);
+        Invoke("StartGame", 2.0f);
     }
 
     public void ExitButtonPressed()
@@ -66,20 +66,18 @@ public class VerticalBox : MonoBehaviour
         Color color = new UnityEngine.Color();
 
         color = background.GetComponent<Image>().color;
-        color.a = 1f;
+        color.a = 0.1f;
 
         while (color.a > 0 && color.a < 255)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
             color.a += 0.1f;
             background.GetComponent<Image>().color = color;
         }
-        //SceneManager.LoadScene(1);
-
         yield return new WaitForSeconds(1);
     }
 
-    public void  StartGame()
+    public void  StartGame() //Så att man kan använda Invoke
     {
         SceneManager.LoadScene(1);
     }
