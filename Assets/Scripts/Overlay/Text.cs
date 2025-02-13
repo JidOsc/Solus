@@ -19,7 +19,7 @@ public class Text : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(key: KeyCode.C) && textIndex < 7) //sifran behöver ändras till max antalet i arrayn om man ändrar det, alltså max-1 för den börjar på 0
+        if (Input.GetKeyDown(key: KeyCode.E) && textIndex < 8) //sifran behöver ändras till max antalet i arrayn om man ändrar det, alltså max-1 för den börjar på 0
         {
             if (textComponent.text == lines[textIndex])
             {
@@ -31,7 +31,7 @@ public class Text : MonoBehaviour
                 textComponent.text = lines[textIndex];
             }
         }
-        else if (Input.GetKeyDown(key: KeyCode.X) && textIndex > 0)
+        else if (Input.GetKeyDown(key: KeyCode.Q) && textIndex > 0)
         {
             if (textComponent.text == lines[textIndex])
             {
@@ -43,7 +43,7 @@ public class Text : MonoBehaviour
                 textComponent.text = lines[textIndex];
             }
         }
-        else if (Input.GetKeyDown(key: KeyCode.X) && textIndex == 7) //samma sak med denna siffran som den översta
+        else if (Input.GetKeyDown(key: KeyCode.X) && textIndex == 8) //samma sak med denna siffran som den översta
         {
             if (textComponent.text == lines[textIndex])
             {
