@@ -363,8 +363,8 @@ MonoBehaviour:
   oreAmount: 0
   stoneAmount: 0
   WoodAmount: 0
-  audioSource: {fileID: 0}
   skadar: {fileID: 8300000, guid: 72ab67167ba63b845ba3ede31e51ffa6, type: 3}
+  "d\xF6r": {fileID: 8300000, guid: a565a109aa077b24ca7eea679017e6d9, type: 3}
   overlay: {fileID: 0}
   interactableObjects: []
   building: {fileID: 1122920251992812365}

@@ -10,6 +10,7 @@ public class PlayerInteract : MonoBehaviour
     public int stoneAmount = 0;
     public int WoodAmount = 0;
     public AudioClip skadar;
+    public AudioClip dör;
 
     public OverlayMngr overlay;
 
@@ -39,7 +40,10 @@ public class PlayerInteract : MonoBehaviour
             {
                 overlay.Attack();
 
-                audioSource.PlayOneShot(skadar, 0.75f);
+                if (!GetComponent<AudioSource>().isPlaying)
+                {
+                    audioSource.PlayOneShot(skadar, 0.75f);
+                }
 
                 if (obj.tag == "Enemies")
                 {
@@ -47,14 +51,18 @@ public class PlayerInteract : MonoBehaviour
                     if (enemy.TakeDamage(damage)) //true om fienden dött
                     {
                         objectsToRemove.Add(obj);
+                        audioSource.PlayOneShot(dör, 0.75f);
                     }
                     break;
                 }
 
                 else if (obj.tag == "Ore" || obj.tag == "Stone" || obj.tag == "Tree")
                 {
-                    audioSource.PlayOneShot(skadar, 0.75f);
+                    if (!GetComponent<AudioSource>().isPlaying)
+                    {
+                        audioSource.PlayOneShot(skadar, 0.75f);
 
+                    }
 
                     OreScript ore = obj.GetComponent<OreScript>();
                     if (ore.Mine()) //true om ore dog
