@@ -8,6 +8,7 @@ public class Text : MonoBehaviour
     public TextMeshProUGUI textComponent;
     public string[] lines;
     public float textSpeed;
+    public bool changeTextIndex = false;
 
     public int textIndex; //numret på texten som visas
 
@@ -19,7 +20,7 @@ public class Text : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(key: KeyCode.E) && textIndex < 8) //sifran behöver ändras till max antalet i arrayn om man ändrar det, alltså max-1 för den börjar på 0
+        if (Input.GetKeyDown(key: KeyCode.E) && textIndex < 8) //siffran behöver ändras till max antalet i arrayn om man ändrar det, alltså max-1 för den börjar på 0
         {
             if (textComponent.text == lines[textIndex])
             {
@@ -43,20 +44,13 @@ public class Text : MonoBehaviour
                 textComponent.text = lines[textIndex];
             }
         }
-        else if (Input.GetKeyDown(key: KeyCode.X) && textIndex == 8) //samma sak med denna siffran som den översta
+        else if (changeTextIndex == true)
         {
-            if (textComponent.text == lines[textIndex])
-            {
-                
-                PastLine();
-            }
-            else
-            {
-                StopAllCoroutines();
-                textComponent.text = lines[textIndex];
-            }
+            textComponent.text = string.Empty;
+            StartCoroutine(TypeLine());
+
+            changeTextIndex = false;
         }
-        else { }
     }
 
     void StartText()

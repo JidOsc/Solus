@@ -46,6 +46,16 @@ public class Enemy : MonoBehaviour
             {
                 if (_alive)
                 {
+                    int textOnlyOnce = 0;
+
+                    if (textOnlyOnce == 0)
+                    {
+                        Text text = GetComponent<Text>();
+                        text.textIndex = 3;
+                        text.changeTextIndex = true;
+
+                        textOnlyOnce++;
+                    }
                     FollowPlayer();
                     if(distanceToPlayer <= attackDistance && !isDealingDamage)
                     {
