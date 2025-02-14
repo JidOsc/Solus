@@ -46,17 +46,24 @@ public class Text : MonoBehaviour
         }
         else if (changeTextIndex == true)
         {
-            textComponent.text = string.Empty;
-            StartCoroutine(TypeLine());
+            if (textIndex < lines.Length)
+            {
+                textComponent.text = string.Empty;
+                StartCoroutine(TypeLine());
 
-            changeTextIndex = false;
+                changeTextIndex = false;
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
     
     void StartText()
     {
         textIndex = 0;
-        //StartCoroutine(TypeLine());
+        StartCoroutine(TypeLine());
     }
 
     IEnumerator TypeLine()
