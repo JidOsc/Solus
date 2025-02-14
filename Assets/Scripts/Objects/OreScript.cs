@@ -2,11 +2,18 @@ using UnityEngine;
 
 public class OreScript : MonoBehaviour
 {
+    public AudioClip ore;
+    private AudioSource audioSource;
+
     public GameObject droppedOrePrefab;
 
     short timesToMine = 5;
     int orePerMine = 1;
 
+    private void Start()
+    {
+        audioSource = gameObject.GetComponent<AudioSource>();
+    }
 
     void DropOre(int quantity)
     {   
@@ -17,6 +24,11 @@ public class OreScript : MonoBehaviour
 
     public bool Mine()
     {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(ore, 1f);
+        }
+
         timesToMine--;
         DropOre(orePerMine);
 
