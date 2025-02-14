@@ -1293,18 +1293,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 8287907294716906164}
   lines:
-  - "Oh no! I\u2019ve crashed on a foreign planet! It looks like I need to find som
-    ore and a pole to get started building a radio-tower to try and get help."
-  - Press E to view the next piece of text and Q to view the previous.
+  - "Oh no! I\u2019ve crashed on a foreign planet! It looks like I need to find some
+    ore to get started building a radio-tower to try and get help. Use E and Q to
+    view instructions."
+  - Press the left mouse button to attack and mine resources. You can pick up resources
+    by using right click on them.
   - It looks like I can mine ore by attacking it.
-  - "That thing doesn\u2019t look happy to share! I need to prepare to defend myself!"
-  - "I\u2019ve made the radar-pole, now I need to find a radio dish and 20x stone
-    to upgrade it."
-  - 'Looks like I need to find a light bulb, 10x ore, 15x stone and 5x wood to finalize
-    the '
-  - 'The radio-tower is finished! And it seems to be calling for help! '
-  - Noo! I seem to have died, maybe I can respawn like in a game?
-  - "No way! I have respawned! I\u2019m immortal! "
+  - You can respawn if you die.
   textSpeed: 0.05
   changeTextIndex: 0
   textIndex: 0

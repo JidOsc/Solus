@@ -50,9 +50,9 @@ public class Enemy : MonoBehaviour
             if (distanceToPlayer <= followDistance)
             {
                 if (_alive)
-                {
+                {/*
                     OverlayMngr manager = overlay.GetComponent<OverlayMngr>();
-                    manager.SetText(3);
+                    manager.SetText(3);*/
 
                     FollowPlayer();
                     if(distanceToPlayer <= attackDistance && !isDealingDamage)

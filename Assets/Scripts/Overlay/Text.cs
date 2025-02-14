@@ -20,7 +20,7 @@ public class Text : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(key: KeyCode.E) && textIndex < 8) //siffran behöver ändras till max antalet i arrayn om man ändrar det, alltså max-1 för den börjar på 0
+        if (Input.GetKeyDown(key: KeyCode.E) && textIndex < 3) //siffran behöver ändras till max antalet i arrayn om man ändrar det, alltså max-1 för den börjar på 0
         {
             if (textComponent.text == lines[textIndex])
             {
