@@ -879,9 +879,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 210876391}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.25
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2903,6 +2903,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MARGIN: -1
   sensitivity_field: {fileID: 1562302224}
+  volume_slider: {fileID: 267217951}
   background: {fileID: 2137656050}
 --- !u!4 &1686226140
 Transform:

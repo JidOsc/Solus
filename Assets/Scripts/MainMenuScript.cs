@@ -9,6 +9,7 @@ public class VerticalBox : MonoBehaviour
 {
     public int MARGIN = 20;
     public GameObject sensitivity_field;
+    public GameObject volume_slider;
     [SerializeField] GameObject background;
 
 
@@ -56,7 +57,7 @@ public class VerticalBox : MonoBehaviour
 
     public void ChangedVolume(float value)
     {
-        PlayerPrefs.SetFloat("VOLUME", value);
+        PlayerPrefs.SetFloat("VOLUME", volume_slider.GetComponent<Slider>().value);
         PlayerPrefs.Save();
     }
 

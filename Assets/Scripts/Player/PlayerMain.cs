@@ -1,14 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class PlayerMain : MonoBehaviour
 {
-
-    [SerializeField] AudioClip sandClip;
-    [SerializeField] AudioClip waterClip;
-    public AudioClip sand;
+    public List<AudioClip> sandFootsteps;
     public AudioClip vatten;
+
     public AudioClip springer;
     public float walkSpeed = 5f;
     public float sprintSpeed = 10f;
@@ -46,6 +45,9 @@ public class PlayerMain : MonoBehaviour
     private float backflipCooldown = 1f; // 1 second cooldown
     private float backflipCooldownTimer = 0f; // Timer for tracking the cooldown
 
+    float volume;
+
+
     void StartBackflip()
     {
         isBackflipping = true;
@@ -79,6 +81,8 @@ public class PlayerMain : MonoBehaviour
 
     void Start()
     {
+        volume = PlayerPrefs.GetFloat("VOLUME");
+
         controller = GetComponent<CharacterController>();
         stamina = maxStamina;
         health = maxHealth;
@@ -163,6 +167,22 @@ public class PlayerMain : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
         isMoving = (moveX != 0 || moveZ != 0);
+
+        if (isMoving && isGrounded)
+        {
+            if (!audioSource.isPlaying)
+            {
+
+                if (onWater)
+                {
+                    audioSource.PlayOneShot(vatten, volume);
+                }
+                else
+                {
+                    audioSource.PlayOneShot(sandFootsteps[Random.Range(0, sandFootsteps.Count)], volume);
+                }
+            }
+        }
     }
 
     public void TakeDamage(int damage)
@@ -187,21 +207,15 @@ public class PlayerMain : MonoBehaviour
         _alive = true;
     }
 
-    public void OnCollisionStay(Collision collision)
+    public void OnTriggerEnter(Collider other)
     {
-        if (isMoving && isGrounded)
-        {
-            if (!audioSource.isPlaying)
-            {
-                if (collision.gameObject.name == "triggerhappy")
-                {
-                    audioSource.PlayOneShot(vatten, 0.75f);
-                }
-                else if (collision.gameObject.name == "sandhappy")
-                {
-                    audioSource.PlayOneShot(sand, 0.75f);
-                }
-            }
-        }
+        if (other.gameObject.tag == "Water")
+            onWater = true;
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Water")
+            onWater = false;
     }
 }

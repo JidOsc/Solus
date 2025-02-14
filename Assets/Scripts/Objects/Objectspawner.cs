@@ -88,7 +88,7 @@ public class Objectspawner : MonoBehaviour
 
             Vector3 pos = new Vector3(x, 0, z);
 
-            pos.y = 11.25f;
+            pos.y = 11.75f;
 
 
             var spawning = Instantiate(jelly[jelly_num], pos, transform.rotation);

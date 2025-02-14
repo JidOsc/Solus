@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 6000117332307821988}
+  overlay: {fileID: 0}
   enemy: {fileID: 9180329115215417984, guid: c9d6c040525d3d64ab756d0644abbce7, type: 3}
   stones:
   - {fileID: 1317047053211836411, guid: cb9de38da8437184ca605bc83a7525b5, type: 3}
@@ -216,8 +217,7 @@ Transform:
   m_LocalPosition: {x: -500, y: 0, z: -500}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8333340363531788518}
+  m_Children: []
   m_Father: {fileID: 7432371779410859859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!218 &4209516943803211342
@@ -416,60 +416,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &8595567534451355591
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8333340363531788518}
-  - component: {fileID: 1979291697185373105}
-  m_Layer: 0
-  m_Name: sandhappy
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8333340363531788518
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8595567534451355591}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 502.00006, y: 11.52, z: 498}
-  m_LocalScale: {x: 200, y: 1, z: 200}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6675651513115422429}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1979291697185373105
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8595567534451355591}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1147493513101062415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -527,9 +473,53 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7624358632751155401, guid: 4562ff735ff787b41b4dc7db2a98d6f1, type: 3}
+      propertyPath: sand
+      value: 
+      objectReference: {fileID: 8300000, guid: d0245a4c50d3d1240828d77f5d48da0b, type: 3}
+    - target: {fileID: 7624358632751155401, guid: 4562ff735ff787b41b4dc7db2a98d6f1, type: 3}
       propertyPath: water
       value: 
       objectReference: {fileID: 7119759658697282418}
+    - target: {fileID: 7624358632751155401, guid: 4562ff735ff787b41b4dc7db2a98d6f1, type: 3}
+      propertyPath: vatten
+      value: 
+      objectReference: {fileID: 8300000, guid: 2a368fdce7de4394a9a49b232ad7543a, type: 3}
+    - target: {fileID: 7624358632751155401, guid: 4562ff735ff787b41b4dc7db2a98d6f1, type: 3}
+      propertyPath: sandFootsteps.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624358632751155401, guid: 4562ff735ff787b41b4dc7db2a98d6f1, type: 3}
+      propertyPath: 'sandFootsteps.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 79767288730ddfe48b8d7abd2a300af1, type: 3}
+    - target: {fileID: 7624358632751155401, guid: 4562ff735ff787b41b4dc7db2a98d6f1, type: 3}
+      propertyPath: 'sandFootsteps.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7283691e5d357c54c87aafe95773d3f2, type: 3}
+    - target: {fileID: 7624358632751155401, guid: 4562ff735ff787b41b4dc7db2a98d6f1, type: 3}
+      propertyPath: 'sandFootsteps.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 44b2895d7af2567418a1641c7966a1cc, type: 3}
+    - target: {fileID: 7624358632751155401, guid: 4562ff735ff787b41b4dc7db2a98d6f1, type: 3}
+      propertyPath: 'sandFootsteps.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 279b72209b4894f4abf88a34f9c457f4, type: 3}
+    - target: {fileID: 7624358632751155401, guid: 4562ff735ff787b41b4dc7db2a98d6f1, type: 3}
+      propertyPath: 'sandFootsteps.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: d0245a4c50d3d1240828d77f5d48da0b, type: 3}
+    - target: {fileID: 7624358632751155401, guid: 4562ff735ff787b41b4dc7db2a98d6f1, type: 3}
+      propertyPath: 'sandFootsteps.Array.data[5]'
+      value: 
+      objectReference: {fileID: 8300000, guid: d5b016bf264b6ae418a4f9e92ecffed0, type: 3}
+    - target: {fileID: 7624358632751155401, guid: 4562ff735ff787b41b4dc7db2a98d6f1, type: 3}
+      propertyPath: 'sandFootsteps.Array.data[6]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 851e91c63fac19348b246f4e0f0d318a, type: 3}
+    - target: {fileID: 7624358632751155401, guid: 4562ff735ff787b41b4dc7db2a98d6f1, type: 3}
+      propertyPath: 'sandFootsteps.Array.data[7]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 6ed5c1ee17736314aa1a5cf58ceaf36d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

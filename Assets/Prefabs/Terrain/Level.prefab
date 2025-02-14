@@ -65,6 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 6000117332307821988}
+  overlay: {fileID: 0}
   enemy: {fileID: 9180329115215417984, guid: c9d6c040525d3d64ab756d0644abbce7, type: 3}
   stones:
   - {fileID: 1317047053211836411, guid: cb9de38da8437184ca605bc83a7525b5, type: 3}
@@ -73,6 +74,7 @@ MonoBehaviour:
   - {fileID: 1317047053211836411, guid: ebf0bc2dc7ed61b4f95307bc49472fa0, type: 3}
   ores:
   - {fileID: 8326932588880210358, guid: eeab29b0d3ce9954c84f1e77adf49a13, type: 3}
+  jelly: []
   TreePrefab: {fileID: 6700183151132978107, guid: 0861f3c1746220f4c97cd970184f017d, type: 3}
 --- !u!1 &6919843766691783274
 GameObject:
@@ -87,7 +89,7 @@ GameObject:
   - component: {fileID: 455081064951442944}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
