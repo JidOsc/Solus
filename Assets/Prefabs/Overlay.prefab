@@ -444,6 +444,7 @@ MonoBehaviour:
   textComponent: {fileID: 8287907294716906164}
   lines: []
   textSpeed: 0.05
+  changeTextIndex: 0
   textIndex: 0
 --- !u!1 &1098220425662728552
 GameObject:
@@ -1200,6 +1201,7 @@ MonoBehaviour:
   textComponent: {fileID: 8287907294716906164}
   lines: []
   textSpeed: 0.05
+  changeTextIndex: 0
   textIndex: 0
 --- !u!1 &2675539227910002072
 GameObject:
@@ -1304,6 +1306,7 @@ MonoBehaviour:
   - Noo! I seem to have died, maybe I can respawn like in a game?
   - "No way! I have respawned! I\u2019m immortal! "
   textSpeed: 0.05
+  changeTextIndex: 0
   textIndex: 0
 --- !u!1 &3203722573940053398
 GameObject:
@@ -2561,6 +2564,37 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &7203388673948893660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8412644012866935836}
+  m_Layer: 0
+  m_Name: WinScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8412644012866935836
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7203388673948893660}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -11.397428, y: -3.7120736, z: -1.0335658}
+  m_LocalScale: {x: 0.80930704, y: 0.80930704, z: 0.80930704}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 268146358245589855}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7207001376916577690
 GameObject:
   m_ObjectHideFlags: 0
@@ -3079,6 +3113,7 @@ RectTransform:
   m_Children:
   - {fileID: 3311719357357142512}
   - {fileID: 341226107611540971}
+  - {fileID: 8412644012866935836}
   - {fileID: 8210314761899940088}
   m_Father: {fileID: 1734616591553768398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RotationObject : MonoBehaviour
 {
+    private List<string> facingObjects = new List<string>() { "Ore", "Enemies", "DroppedOre", "Station", "DroppedStone", "Tree", "TreeDrop", "Jelly" };
 
     public Vector3 player_pos = new Vector3(0, 0, 0);
 
@@ -24,11 +25,22 @@ public class RotationObject : MonoBehaviour
         {
             GameObject obj = tsfm.gameObject;
 
-            if (obj.tag == "Ore" || obj.tag == "Enemies" || obj.tag == "DroppedOre" || obj.tag == "Station" || obj.tag == "DroppedStone" || obj.tag == "Tree" || obj.tag == "TreeDrop" || obj.tag == "Jelly")
+            if (facingObjects.Contains(obj.tag))
             {
+                if(obj.tag != "Station")
+                {
+                    if (Vector2.Distance(new Vector2(player.transform.position.x, player.transform.position.z), new Vector2(obj.transform.position.x, obj.transform.position.z)) > 150)
+                    {
+                        obj.SetActive(false);
+                    }
+                    else
+                    {
+                        obj.SetActive(true);
+                    }
+                }
+                //objektet kollar på spelaren
                 player_pos = player.transform.position;
                 player_pos.y = obj.transform.position.y;
-
                 obj.transform.LookAt(player_pos);
 
             }
@@ -47,19 +59,6 @@ public class RotationObject : MonoBehaviour
             {
                 lighty.SetActive(false);
             }*/
-
-            if (obj.tag == "Ore" || obj.tag == "Enemies" || obj.tag == "Stone")
-            {
-                if (Vector2.Distance(new Vector2(player.transform.position.x, player.transform.position.z), new Vector2(obj.transform.position.x, obj.transform.position.z)) > 150)
-                {
-                    obj.SetActive(false);
-                }
-
-                else
-                {
-                    obj.SetActive(true);
-                }
-            }
         }
     }
 }
