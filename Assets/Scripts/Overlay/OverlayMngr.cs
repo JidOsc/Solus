@@ -28,6 +28,8 @@ public class OverlayMngr : MonoBehaviour
     public GameObject Textbox2;
     public GameObject Textbox3;
 
+    private bool hasShownEnemyText = false;
+
     void Start()
     {
 
@@ -60,6 +62,16 @@ public class OverlayMngr : MonoBehaviour
     public void Attack()
     {
         fpImage.GetComponent<Animator>().SetTrigger("Attack");
+    }
+
+    public void SetText(int number)
+    {
+        if(number == 3 && !hasShownEnemyText)
+        {
+            //text.textIndex = 3;
+            //text.changeTextIndex = true;
+            //hasShownEnemyText = true;
+        }
     }
 
     public void DisplayText(string text)
