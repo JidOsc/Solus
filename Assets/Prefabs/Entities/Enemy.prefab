@@ -68,7 +68,6 @@ GameObject:
   - component: {fileID: 6190076364275689147}
   - component: {fileID: 6868125480911335611}
   - component: {fileID: 7877852240636896616}
-  - component: {fileID: 8648235241063218881}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemies
@@ -105,6 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 9118517663248347731, guid: 9a71dd38edbb3564eaba1ac1c7de98de, type: 3}
+  overlay: {fileID: 0}
   skadar: {fileID: 8300000, guid: 9ebd99484488d394892c26250aa4b820, type: 3}
   audioSource: {fileID: 0}
   speed: 4
@@ -313,11 +313,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!81 &8648235241063218881
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9180329115215417984}
-  m_Enabled: 1

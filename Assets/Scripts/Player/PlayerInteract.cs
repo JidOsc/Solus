@@ -5,7 +5,7 @@ using TMPro;
 public class PlayerInteract : MonoBehaviour
 {
     public int damage = 5;
-
+    public AudioClip sten;
     public int oreAmount = 0;
     public int stoneAmount = 0;
     public int WoodAmount = 0;
@@ -40,34 +40,24 @@ public class PlayerInteract : MonoBehaviour
             {
                 overlay.Attack();
 
-                if (!GetComponent<AudioSource>().isPlaying)
-                {
-                    audioSource.PlayOneShot(skadar, 0.75f);
-                }
-
                 if (obj.tag == "Enemies")
                 {
                     Enemy enemy = obj.GetComponent<Enemy>();
                     if (enemy.TakeDamage(damage)) //true om fienden dött
                     {
                         objectsToRemove.Add(obj);
-                        audioSource.PlayOneShot(dör, 0.75f);
+                            audioSource.PlayOneShot(skadar, 0.75f);
                     }
                     break;
                 }
 
                 else if (obj.tag == "Ore" || obj.tag == "Stone" || obj.tag == "Tree")
                 {
-                    if (!GetComponent<AudioSource>().isPlaying)
-                    {
-                        audioSource.PlayOneShot(skadar, 0.75f);
-
-                    }
-
                     OreScript ore = obj.GetComponent<OreScript>();
                     if (ore.Mine()) //true om ore dog
                     {
                         objectsToRemove.Add(obj.gameObject);
+                        audioSource.PlayOneShot(sten, 0.75f);
                     }
                     break;
                 }

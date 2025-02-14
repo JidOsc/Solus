@@ -360,6 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  sten: {fileID: 8300000, guid: f0b9153e5a20d2e46955af3cf829a95f, type: 3}
   oreAmount: 0
   stoneAmount: 0
   WoodAmount: 0

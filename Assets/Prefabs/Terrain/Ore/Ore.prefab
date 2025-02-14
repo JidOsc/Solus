@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e19f2d75213f294dbd27fd7fa2079b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ore: {fileID: 0}
   droppedOrePrefab: {fileID: 4753874515576094990, guid: 67761a93b5875e649bcacabdf4a682cc, type: 3}
 --- !u!23 &8557859263394176493
 MeshRenderer:
