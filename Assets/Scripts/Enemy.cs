@@ -150,6 +150,11 @@ public class Enemy : MonoBehaviour
         isDealingDamage = true;
         player.GetComponent<PlayerMain>().TakeDamage(damageAmount);
 
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(skadar, 0.5f);
+        }
+
         yield return new WaitForSeconds(delay);
         isDealingDamage = false;
     }

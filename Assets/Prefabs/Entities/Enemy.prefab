@@ -103,6 +103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 9118517663248347731, guid: 9a71dd38edbb3564eaba1ac1c7de98de, type: 3}
+  skadar: {fileID: 8300000, guid: 9ebd99484488d394892c26250aa4b820, type: 3}
+  audioSource: {fileID: 0}
   speed: 4
   damage: 2
   maxHealth: 100
