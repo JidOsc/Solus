@@ -9,6 +9,7 @@ public class PlayerMain : MonoBehaviour
     [SerializeField] AudioClip waterClip;
     public AudioClip sand;
     public AudioClip vatten;
+    public AudioClip springer;
     public float walkSpeed = 5f;
     public float sprintSpeed = 10f;
     public float jumpForce = 7f;
@@ -120,8 +121,23 @@ public class PlayerMain : MonoBehaviour
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
 
+
         bool isSprinting = Input.GetKey(KeyCode.LeftShift) && stamina > 0;
         float currentSpeed = isSprinting ? sprintSpeed : walkSpeed;
+        if (isSprinting)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(springer, 1f);
+            }
+        }
+        else
+        {
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
+        }
 
         float targetFOV = isSprinting ? sprintFOV : normalFOV;
         playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, targetFOV, Time.deltaTime * fovSpeed);

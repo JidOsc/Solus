@@ -5,6 +5,8 @@ public class Enemy : MonoBehaviour
 {
     public GameObject player;
 
+    public AudioClip skadar;
+    public AudioSource audioSource;
     public float speed = 2f;
     public int damage = 10;
     public int maxHealth = 100;
@@ -26,6 +28,8 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
+
         _alive = true;
         currentHealth = maxHealth;
         isDealingDamage = false;
