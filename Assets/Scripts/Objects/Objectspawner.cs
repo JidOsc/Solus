@@ -11,11 +11,17 @@ public class Objectspawner : MonoBehaviour
     public List<GameObject> ores = new List<GameObject>();
     public List<GameObject> jelly = new List<GameObject>();
 
+    private const int STONES = 3500;
+    private const int ORES = 50;
+    private const int TREES = 100;
+    private const int ENEMIES = 100;
+    private const int JELLY = 1000;
+
     public GameObject TreePrefab;
 
     void Start()
     {              
-        for (int i = 0; i < 3500; i++)
+        for (int i = 0; i < STONES; i++)
         {
             int stone_num = Random.Range(0, 4);
             int x = Random.Range(-500, 500);
@@ -31,7 +37,7 @@ public class Objectspawner : MonoBehaviour
             spawning.transform.parent = level.transform;
         }
 
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < ORES; i++)
         {
             int x = Random.Range(-500, 500);
             int z = Random.Range(-500, 500);
@@ -45,7 +51,7 @@ public class Objectspawner : MonoBehaviour
             spawning.transform.parent = level.transform;
         }
 
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < ENEMIES; i++)
         {
             int x = Random.Range(-500, 500);
             int z = Random.Range(-500, 500);
@@ -59,7 +65,7 @@ public class Objectspawner : MonoBehaviour
             spawning.transform.parent = level.transform;
         }
 
-        for (int i = 0; i < 300; i++)
+        for (int i = 0; i < TREES; i++)
         {
             int x = Random.Range(-500, 500);
             int z = Random.Range(-500, 500);
@@ -72,7 +78,7 @@ public class Objectspawner : MonoBehaviour
             var spawning = Instantiate(TreePrefab, pos, transform.rotation);
             spawning.transform.parent = level.transform;
         }
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < JELLY; i++)
         {
             int jelly_num = Random.Range(0, 1);
             int x = Random.Range(-500, 500);

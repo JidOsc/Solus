@@ -69,6 +69,7 @@ public class OverlayMngr : MonoBehaviour
 
     public void FaintIn(float seconds)
     {
+        fpImage.GetComponent<Animator>().SetTrigger("Dead");
         Invoke("ShowFaintedScreen", seconds);
     }
 

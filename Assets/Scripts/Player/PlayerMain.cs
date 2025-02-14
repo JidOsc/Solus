@@ -39,7 +39,7 @@ public class PlayerMain : MonoBehaviour
     private bool isMoving = false;
     private AudioSource audioSource;
 
-
+    private bool _alive = true;
 
     private float currentBackflipTime = 1f;
     private bool isBackflipping = false;
@@ -171,10 +171,11 @@ public class PlayerMain : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        if (health <= 0)
+        if (_alive && health <= 0)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            _alive = false;
             overlay.FaintIn(2.0f);
         }
     }
@@ -186,6 +187,7 @@ public class PlayerMain : MonoBehaviour
         transform.position = new Vector3(0, 0, 0);
         GetComponent<PlayerInteract>().oreAmount = 0;
         health = maxHealth;
+        _alive = true;
     }
 
     public void OnTriggerStay(Collider other)
