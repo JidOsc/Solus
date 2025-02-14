@@ -4,6 +4,7 @@ using System.Collections;
 public class Enemy : MonoBehaviour
 {
     public GameObject player;
+    public GameObject overlay;
 
     public AudioClip skadar;
     public AudioSource audioSource;
@@ -50,16 +51,9 @@ public class Enemy : MonoBehaviour
             {
                 if (_alive)
                 {
-                    int textOnlyOnce = 0;
+                    OverlayMngr manager = overlay.GetComponent<OverlayMngr>();
+                    manager.SetText(3);
 
-                    if (textOnlyOnce == 0)
-                    {
-                        Text text = GetComponent<Text>();
-                        text.textIndex = 3;
-                        text.changeTextIndex = true;
-
-                        textOnlyOnce++;
-                    }
                     FollowPlayer();
                     if(distanceToPlayer <= attackDistance && !isDealingDamage)
                     {

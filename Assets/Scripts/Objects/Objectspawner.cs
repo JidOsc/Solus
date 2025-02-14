@@ -4,6 +4,7 @@ using UnityEngine;
 public class Objectspawner : MonoBehaviour
 {
     public GameObject level;
+    public GameObject overlay;
 
     public GameObject enemy;
 
@@ -62,6 +63,7 @@ public class Objectspawner : MonoBehaviour
 
 
             var spawning = Instantiate(enemy, pos, transform.rotation);
+            spawning.GetComponent<Enemy>().overlay = overlay;
             spawning.transform.parent = level.transform;
         }
 

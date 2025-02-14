@@ -124,12 +124,9 @@ public class PlayerMain : MonoBehaviour
 
         bool isSprinting = Input.GetKey(KeyCode.LeftShift) && stamina > 0;
         float currentSpeed = isSprinting ? sprintSpeed : walkSpeed;
-        if (isSprinting)
+        /*if (isSprinting)
         {
-            if (!audioSource.isPlaying)
-            {
-                audioSource.PlayOneShot(springer, 1f);
-            }
+
         }
         else
         {
@@ -137,7 +134,7 @@ public class PlayerMain : MonoBehaviour
             {
                 audioSource.Stop();
             }
-        }
+        }*/
 
         float targetFOV = isSprinting ? sprintFOV : normalFOV;
         playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, targetFOV, Time.deltaTime * fovSpeed);
@@ -165,7 +162,7 @@ public class PlayerMain : MonoBehaviour
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        isMoving = moveX != 0 || moveZ != 0;
+        isMoving = (moveX != 0 || moveZ != 0);
     }
 
     public void TakeDamage(int damage)
@@ -190,19 +187,20 @@ public class PlayerMain : MonoBehaviour
         _alive = true;
     }
 
-    public void OnTriggerStay(Collider other)
+    public void OnCollisionStay(Collision collision)
     {
-        if (!audioSource.isPlaying)
+        if (isMoving && isGrounded)
         {
-            if (other.gameObject.name == "triggerhappy")
+            if (!audioSource.isPlaying)
             {
-                onWater = true;
-                audioSource.PlayOneShot(vatten, 0.75f);
-            }
-            else if (other.gameObject.name == "sandhappy")
-            {
-                onWater = false;
-                audioSource.PlayOneShot(sand, 0.75f);
+                if (collision.gameObject.name == "triggerhappy")
+                {
+                    audioSource.PlayOneShot(vatten, 0.75f);
+                }
+                else if (collision.gameObject.name == "sandhappy")
+                {
+                    audioSource.PlayOneShot(sand, 0.75f);
+                }
             }
         }
     }
