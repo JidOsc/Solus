@@ -52,11 +52,11 @@ public class Text : MonoBehaviour
             changeTextIndex = false;
         }
     }
-
+    
     void StartText()
     {
         textIndex = 0;
-        StartCoroutine(TypeLine());
+        //StartCoroutine(TypeLine());
     }
 
     IEnumerator TypeLine()
