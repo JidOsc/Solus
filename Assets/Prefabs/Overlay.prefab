@@ -1293,8 +1293,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 8287907294716906164}
   lines:
-  - "Oh no! I\u2019ve crashed on a foreign planet! It looks like I need to find 10x
-    green ore and a pole to get started building a radio-tower to try and get help."
+  - "Oh no! I\u2019ve crashed on a foreign planet! It looks like I need to find som
+    ore and a pole to get started building a radio-tower to try and get help."
   - Press E to view the next piece of text and Q to view the previous.
   - It looks like I can mine ore by attacking it.
   - "That thing doesn\u2019t look happy to share! I need to prepare to defend myself!"

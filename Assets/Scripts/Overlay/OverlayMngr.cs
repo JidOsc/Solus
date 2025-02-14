@@ -30,6 +30,8 @@ public class OverlayMngr : MonoBehaviour
 
     private bool hasShownEnemyText = false;
 
+    Text text;
+
     void Start()
     {
 
@@ -68,9 +70,9 @@ public class OverlayMngr : MonoBehaviour
     {
         if(number == 3 && !hasShownEnemyText)
         {
-            //text.textIndex = 3;
-            //text.changeTextIndex = true;
-            //hasShownEnemyText = true;
+            text.textIndex = 3;
+            text.changeTextIndex = true;
+            hasShownEnemyText = true;
         }
     }
 
