@@ -66,7 +66,7 @@ public class PlayerInteract : MonoBehaviour
             else if (obj.tag == "Station")
             {
                 StationScript station = obj.GetComponent<StationScript>();
-                overlay.DisplayText("Press TAB to repair station\nRequired Amount: " + station.CurrentCost().ToString());
+                overlay.DisplayText("Press TAB to repair station\nRequired Ore Amount: " + station.CurrentCost().ToString());
 
                 if (Input.GetKeyDown(KeyCode.Tab))
                 {
@@ -80,7 +80,7 @@ public class PlayerInteract : MonoBehaviour
 
             else if (obj.tag == "DroppedOre" || obj.tag == "DroppedStone" || obj.tag == "TreeDrop")
             {
-                overlay.DisplayText("Press right mouse button to pick up ore");
+                overlay.DisplayText("Press right mouse button to pick up");
 
                 //if player picks up ore
                 if (!pickedThisFrame && Input.GetMouseButtonDown(1))
