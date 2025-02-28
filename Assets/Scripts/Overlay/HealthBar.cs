@@ -5,6 +5,8 @@ public class HealthBar : MonoBehaviour
 {
     public Slider slider;
 
+    //Script till healthbar som visar en slider med hur mycket health man har
+
     public void setMaxHealth(int health)
     {
         slider.maxValue = health;

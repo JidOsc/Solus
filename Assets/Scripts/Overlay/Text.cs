@@ -12,6 +12,8 @@ public class Text : MonoBehaviour
 
     public int textIndex; //numret på texten som visas
 
+    //Script till textrutan uppe i högra hörnet, där man kan bläddra mellan olika texter med E och Q
+
     void Start()
     {
         textComponent.text = string.Empty;

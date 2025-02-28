@@ -5,6 +5,8 @@ public class StaminaBar : MonoBehaviour
 {
     public Slider slider;
 
+    //Script till staminabar som visar en slider med hur mycket stamina man har
+
     public void setMaxStamina(int stamina)
     {
         slider.maxValue = stamina;
