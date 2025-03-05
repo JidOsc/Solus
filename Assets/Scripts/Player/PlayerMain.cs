@@ -8,6 +8,8 @@ public class PlayerMain : MonoBehaviour
     public List<AudioClip> sandFootsteps;
     public AudioClip vatten;
 
+    public Transform SpawnPos;
+
     public AudioClip springer;
     public float walkSpeed = 5f;
     public float sprintSpeed = 10f;
@@ -201,7 +203,7 @@ public class PlayerMain : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        transform.position = new Vector3(0, 0, 0);
+        transform.position = SpawnPos.position;
         GetComponent<PlayerInteract>().oreAmount = 0;
         health = maxHealth;
         _alive = true;

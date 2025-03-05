@@ -87,6 +87,11 @@ public class OverlayMngr : MonoBehaviour
         Invoke("ShowFaintedScreen", seconds);
     }
 
+    public void ResetFPImage()
+    {
+        fpImage.GetComponent<Animator>().SetTrigger("Reset");
+    }
+
     private void ShowFaintedScreen()
     {
         Debug.Log("dod");
